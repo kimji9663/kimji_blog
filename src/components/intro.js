@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-//import TweenComponent from './TweenComponent';
+import TweenComponent from './TweenComponent';
 
 const Intro = () => {
 
@@ -7,7 +7,7 @@ const Intro = () => {
         <Fragment>
             <div className="top-intro">
                 <div className="inner">
-                    {/* <TweenComponent></TweenComponent> */}
+                    <TweenComponent></TweenComponent>
                 </div>
             </div>
             <div className="work">

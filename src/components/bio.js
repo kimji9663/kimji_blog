@@ -8,6 +8,7 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import { BeakerIcon } from '@heroicons/react/solid'
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -36,7 +37,7 @@ const Bio = () => {
         className="bio-avatar"
         layout="fixed"
         formats={["auto", "webp", "avif"]}
-        src="../images/profile-pic.png"
+        src="../images/logo-jihye.jpg"
         width={50}
         height={50}
         quality={95}
@@ -44,11 +45,14 @@ const Bio = () => {
       />
       {author?.name && (
         <p>
-          Written by <strong>{author.name}</strong> {author?.summary || null}
+          <strong>{author.name}</strong>의 공부하고 기록하는<br className="lg-d-none"/> 
+          블로그 입니다.
+          {/* {author?.summary || null} */}
           {` `}
-          <a href={`https://twitter.com/${social?.twitter || ``}`}>
-            You should follow them on Twitter
-          </a>
+          
+          {/* <a href={`https://twitter.com/${social?.twitter || ``}`}>
+            Twitter
+          </a> */}
         </p>
       )}
     </div>

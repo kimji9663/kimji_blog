@@ -16,45 +16,56 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-        </header>
-        <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
-          itemProp="articleBody"
-        />
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
-      </article>
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
+      <div className="view__wrap">
+        <article
+          className="blog-post"
+          itemScope
+          itemType="http://schema.org/Article"
         >
-          <li>
+          <header className="title__wrap">
+            <h1 className="title" itemProp="headline">{post.frontmatter.title}</h1>
+            <p>{post.frontmatter.date}</p>
+          </header>
+          <section
+            dangerouslySetInnerHTML={{ __html: post.html }}
+            itemProp="articleBody"
+          />
+          <hr />
+          {/* <footer>
+            <Bio />
+          </footer> */}
+        </article>
+      </div>
+
+      <nav className="blog-post-nav">
+        <ul>
+          <li className="prev">
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                </svg>
+                <div>
+                  <div className="nav-text">
+                    이전 글
+                  </div>
+                  {previous.frontmatter.title}
+                </div>
               </Link>
             )}
           </li>
-          <li>
+          <li className="next">
             {next && (
               <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+                <div>
+                  <div className="nav-text">
+                    다음 글
+                  </div>
+                  {next.frontmatter.title}
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
               </Link>
             )}
           </li>
