@@ -2,8 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby" 
 import Layout from "../components/layout"
 import Bio from "../components/bio"
-import SEO from "../components/seo"
-//import { rhythm } from "../utils/typography"
+import Seo from "../components/seo"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -11,7 +10,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+      <Seo title="All posts" />
       <div className="blog-top">
         <Bio></Bio>
       </div>
@@ -21,11 +20,7 @@ const BlogIndex = ({ data, location }) => {
           return (
             <article key={node.fields.slug}>
               <header>
-                <h3
-                  style={{
-                    //marginBottom: rhythm(1 / 4),
-                  }}
-                >
+                <h3>
                   <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
                     {title}
                   </Link>
