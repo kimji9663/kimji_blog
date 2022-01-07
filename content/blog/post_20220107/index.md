@@ -25,7 +25,7 @@ git reflog
 ```
 
 4. master로 이동
-``
+```
 git checkout master
 ```
 
