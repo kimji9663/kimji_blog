@@ -10,6 +10,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { BeakerIcon } from '@heroicons/react/solid'
 
+// Author Biography
 const Bio = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {

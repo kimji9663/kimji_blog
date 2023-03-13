@@ -33,6 +33,7 @@ const BlogIndex = ({ data, location }) => {
                     __html: node.frontmatter.description || node.excerpt,
                   }}
                 />
+                
               </section>
             </article>
           )
