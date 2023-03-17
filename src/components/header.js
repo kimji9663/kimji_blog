@@ -7,7 +7,6 @@ const Header = ({ location, title }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header
-  let main
 
   if (isRootPath) {
     header = (
