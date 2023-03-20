@@ -1,0 +1,1 @@
+export const MEDIA_DESKTOP_WIDTH = 992
