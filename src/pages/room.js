@@ -7,7 +7,11 @@ import { Container } from "./room.styles"
 import styled from "@emotion/styled"
 import { Global, css } from "@emotion/react"
 import useElementPosition from '../components/useElementPosition'
-import { HeaddingText, HeaddingWrap } from "./room.styles"
+//import { BreakpointProvider } from 'gatsby-plugin-breakpoints';
+//import { useBreakpoint } from 'gatsby-plugin-breakpoints';
+
+// css
+import { Main, MainInner, HeaddingText, HeaddingWrap } from "./room.styles"
   
 
 //const ConButton = Container.withComponent("button");
@@ -51,36 +55,36 @@ const Room = ({ data, location }, props) => {
     const elementRef = useRef(null)
     const totalFrames = 144
     const imageFrame = useElementPosition(elementRef, totalFrames, 1)
+    //const breakpoints = useBreakpoint()
 
     useEffect(() => {
-      let index = getTextIndexPercentage()
-      if (index < headingData.length) setTextIndex(index)
-      console.log(imageFrame)
+      let textPercentage = Math.floor((headingData.length * imageFrame) / totalFrames ) // 0 ~ 4
+      if (textPercentage < headingData.length) setTextIndex(textPercentage)
     }, [imageFrame])
-
-    function getTextIndexPercentage() {
-      return Math.floor((headingData.length * imageFrame) / totalFrames )
-    }
 
     return (
       <>
         <Global styles={globalStyle} />
-        <div ref={elementRef}>
-          <div imageframe={imageFrame}>
-            <HeaddingWrap index={textIndex} datalength={headingData.length}>
-              {headingData?.map(({headding}, i) => {
-                return (
-                  <HeaddingText className={`section_${i}`} key={i} first={i === 0 ? true : false}>
-                    <h1 style={{
-                      opacity: i === textIndex ? 1 : 0
-                    }}>{headding}</h1>
-                  </HeaddingText>
-                )
-              })}
-            </HeaddingWrap>
-          </div>
-        </div>
-        <UserButton />
+        {/* <BreakpointProvider> */}
+        
+          <Main ref={elementRef}>
+            <MainInner imageframe={imageFrame}>
+              <HeaddingWrap index={textIndex} datalength={headingData.length}>
+                <div>
+                  {headingData?.map(({headding}, i) => {
+                    return (
+                      <HeaddingText key={i} section={i} index={textIndex}>
+                        <h1>{headding}</h1>
+                        <div>IMAGE AREA</div>
+                      </HeaddingText>
+                    )
+                  })}
+                </div>
+              </HeaddingWrap>
+            </MainInner>
+          </Main>
+          {/* <UserButton /> */}
+        {/* </BreakpointProvider> */}
       </>
     )
 }
