@@ -1,11 +1,3 @@
-const myCustomQueries = {
-  xs: '(max-width: 320px)',
-  sm: '(max-width: 720px)',
-  md: '(max-width: 1024px)',
-  l: '(max-width: 1536px)',
-  portrait: '(orientation: portrait)',
-};
-
 module.exports = {
   siteMetadata: {
     title: `Jihye Kim`,
@@ -21,14 +13,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-emotion`
-  ],
-  plugins: [
-    {
-        resolve: "gatsby-plugin-breakpoints",
-        options: {
-            queries: myCustomQueries,
-        },
-    },
   ],
   plugins: [
     `gatsby-plugin-image`,
