@@ -10,7 +10,6 @@ import useElementPosition from '../components/useElementPosition'
 
 // css
 import { Main, MainInner, HeaddingText, HeaddingWrap, Video } from "./room.styles"
-  
 
 //const ConButton = Container.withComponent("button");
 
@@ -88,11 +87,38 @@ const Room = ({ data, location }, props) => {
     };
 
 
+    // set loading
+    const [loading, setLoading] = useState(true);
+
+    const mainApi = async () => {
+      setLoading(true); // api 호출 전에 true로 변경하여 로딩화면 띄우기
+        try {
+          const response = await fetch(`api url`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(),
+          });
+
+          const result = await response.json();
+          console.log('mainData', result);
+          setLoading(false); // api 호출 완료 됐을 때 false로 변경하려 로딩화면 숨김처리
+        } catch (error) {
+          window.alert(error);
+        }
+    }; 
+
+    useEffect(() => {
+      mainApi();
+    }, []);
+
     useEffect(() => {
       let textPercentage = Math.floor((headingData.length * imageFrame) / totalFrames ) // 0 ~ 4
       if (textPercentage < headingData.length) setTextIndex(textPercentage)
       videoScroll(); // video scroll
-      console.log(imageFrame)
+      //console.log(imageFrame)
     }, [imageFrame])
 
 
@@ -100,6 +126,7 @@ const Room = ({ data, location }, props) => {
     return (
       <>
         <Global styles={globalStyle} />
+        {/* {loading ? <Loading /> : null} */}
         
           <Main ref={elementRef}>
             <MainInner imageframe={imageFrame}>
