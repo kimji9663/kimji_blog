@@ -1,6 +1,10 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { jsx, css } from "@emotion/react"
+import facepaint from 'facepaint'
+
+const breakpoint = [576, 768, 992, 1200]
+const mq = facepaint(breakpoint.map(bp => `@media (min-width: ${bp}px)`))
 
 export const Main = styled.div(() => ({
     position: 'relative',
@@ -30,16 +34,17 @@ export const HeaddingWrap = styled.div(({ index, datalength }) => ({
         alignItems: 'center',
         position: 'absolute',
         top: `-${100 * index}%`,
+        zIndex: 1,
         width: '100%',
         height: `${100 * datalength}%`,
     }
 }));
 
-export const HeaddingText = styled.div(({ section, index, mode }) => ({
+export const HeaddingText = styled.div(({ section, index, mode }) => mq({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    //flexDirection: mode ? 'column' : 'row',
+    flexDirection: [ 'column', 'column', 'row' ],
     width: '100%',
     height: '100%',
     '& > h1': {
@@ -64,3 +69,9 @@ export const HeaddingText = styled.div(({ section, index, mode }) => ({
         backgroundColor: '#fff'
     }
 }));
+
+export const Video = styled.video(() => ({
+    position: 'fixed',
+    height: '100%',
+    width: '100%',
+}))
