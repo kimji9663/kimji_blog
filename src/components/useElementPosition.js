@@ -6,7 +6,7 @@ const useElementPosition = (element, frames, initialValue) => {
     useEffect(() => {
         window.addEventListener('scroll', getFrameRates)
         return () => window.removeEventListener('scroll', getFrameRates)
-    })
+    }, [])
 
     function getFrameRates(){
         let rect = element.current.getBoundingClientRect();
