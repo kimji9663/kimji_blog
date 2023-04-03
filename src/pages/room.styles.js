@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { jsx, css, keyframes } from "@emotion/react"
+import { keyframes } from "@emotion/react"
 import { mq } from '../constants/index'
 
 export const Main = styled.div(() => ({
@@ -61,23 +61,44 @@ export const BackgroundImg3 = styled.div(({ total, index }) => ({
     transition: 'all 01s ease-in-out',
 }))
 
+export const VideoHeading = styled.div(({ index }) => mq({
+    display: 'flex',
+    flexDirection: [ 'column', 'column', 'row' ],
+    alignItems: 'center',
+    backgroundColor: index === 0 ? '#ffeece' : (index === 1 ? '#ffefe5' : (index === 2 ? '#eaeaea' : '#fffeee')),
+    width: '100%',
+    height: '100%',
+}));
+
 export const HeaddingWrap = styled.div(({ index, datalength }) => ({
-    position: 'absolute',
+    position: 'relative',
     width: '100%',
     height: '100%',
     overflow: 'hidden',
-    backgroundColor: index === 0 ? '#ffeece' : (index === 1 ? '#ffefe5' : (index === 2 ? '#eaeaea' : '#fffeee')),
+    flex: '1 0 50%',
     '& > div': {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         position: 'absolute',
         top: `-${100 * index}%`,
+        left: 0,
         zIndex: 1,
         width: '100%',
         height: `${100 * datalength}%`,
     }
 }));
+
+export const Video = styled.div(() => ({
+    display: 'flex',
+    width: '100%',
+    height: '100%',
+    flex: '1 0 50%',
+    backgroundColor: '#000',
+    '& > video': {
+        width: '100%',
+    }
+}))
 
 export const HeaddingText = styled.div(({ section, index, mode }) => mq({
     display: 'flex',
@@ -109,12 +130,6 @@ export const HeaddingText = styled.div(({ section, index, mode }) => mq({
         backgroundColor: '#fff'
     }
 }));
-
-export const Video = styled.video(() => ({
-    position: 'fixed',
-    height: '100%',
-    width: '100%',
-}))
 
 /*** ANIMATION ***/
 export const slime = keyframes`
