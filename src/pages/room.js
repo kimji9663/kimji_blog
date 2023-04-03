@@ -1,10 +1,6 @@
 import React, { useEffect, useState, useRef } from "react"
-import { Link, graphql } from "gatsby" 
 import Loading from "../components/loading"
-import Bio from "../components/bio"
 import Seo from "../components/seo"
-import { Container } from "./room.styles"
-import styled from "@emotion/styled"
 import { Global, css } from "@emotion/react"
 import useElementPosition from '../components/useElementPosition'
 
@@ -120,70 +116,46 @@ const Room = ({ data, location }, props) => {
 
     return (
       <>
+        <Seo title="ROOM" />
         <Global styles={globalStyle} />
         {loading ? <Loading /> : null}
         
-          <Main ref={elementRef}>
-            <MainInner videoFrame={videoFrame}>
-              <VideoHeading index={textIndex}>
-                <HeaddingWrap index={textIndex} datalength={headingData.length}>
-                  <div>
-                    {headingData?.map(({headding}, i) => {
-                      return (
-                        <HeaddingText key={i} section={i} index={textIndex}>
-                          <h1>{headding}</h1>
-                          {/* <div>IMAGE AREA</div> */}
-                        </HeaddingText>
-                      )
-                    })}
-                  </div>
-                </HeaddingWrap>
-                <Video>
-                  <video ref={videoRef} autobuffer="autobuffer" preload="preload">
-                    <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="https://www.apple.com/media/us/mac-pro/2013/16C1b6b5-1d91-4fef-891e-ff2fc1c1bb58/videos/macpro_main_desktop.mp4"></source>
-                  </video>
-                </Video>
-              </VideoHeading>
-            </MainInner>
-          </Main>
-          <div>
-            fuggjkgh
-            <br />
-            fuggjkgh
-            <br />
-            fuggjkgh
-            <br />
-            fuggjkgh
-            <br />
-          </div>
-          {/* <UserButton /> */}
+        <Main ref={elementRef}>
+          <MainInner videoFrame={videoFrame}>
+            <VideoHeading index={textIndex}>
+              <HeaddingWrap index={textIndex} datalength={headingData.length}>
+                <div>
+                  {headingData?.map(({headding}, i) => {
+                    return (
+                      <HeaddingText key={i} section={i} index={textIndex}>
+                        <h1>{headding}</h1>
+                        {/* <div>IMAGE AREA</div> */}
+                      </HeaddingText>
+                    )
+                  })}
+                </div>
+              </HeaddingWrap>
+              <Video>
+                <video ref={videoRef} autobuffer="autobuffer" preload="preload">
+                  <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="https://www.apple.com/media/us/mac-pro/2013/16C1b6b5-1d91-4fef-891e-ff2fc1c1bb58/videos/macpro_main_desktop.mp4"></source>
+                </video>
+              </Video>
+            </VideoHeading>
+          </MainInner>
+        </Main>
+        <div>
+          fuggjkgh
+          <br />
+          fuggjkgh
+          <br />
+          fuggjkgh
+          <br />
+          fuggjkgh
+          <br />
+        </div>
+        {/* <UserButton /> */}
       </>
     )
 }
 
 export default Room
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
-        }
-      }
-    }
-  }
-`
