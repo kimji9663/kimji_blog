@@ -1,17 +1,5 @@
 import { useRef, useEffect } from "react";
 
-class Card {
-  constructor() {
-  }
-}
-
-const squares = [];
-const rectAngle = (index, length) => {
-  let per = 360 / length * index;
-  let result = per * Math.PI / 360;
-  return result;
-}
-
 export const useCanvas = (canvaswidth, canvasheight, animate) => {
   const canvasRef = useRef(null)
 
@@ -33,32 +21,25 @@ export const useCanvas = (canvaswidth, canvasheight, animate) => {
       }
     }
     setCanvas()
+    //animate(ctx)
 
-    if (ctx) {
-      animate(ctx)
+    let requestId = 0
+    const requestAnimation = () => {
+      requestId = window.requestAnimationFrame(requestAnimation)
+
+      if (ctx) {
+        animate(ctx)
+      }
+    }
+    requestAnimation()
+
+    // 컴포넌트 unmount시 animate()함수 호출 중단
+    // (이 처리를 하지 않으면 다른페이지로 이동 후에도 계속 animate()함수를 호출하여 메모리 누수 발생 됨)
+    return () => {
+      window.cancelAnimationFrame(requestId)
     }
 
-    
-    // const center = {
-    //   size: 500,
-    //   x: canvaswidth / 2,
-    //   y: canvasheight / 2,
-    // }
-
-    // ctx.fillStyle = "#f79c9c";
-
-    // for (let i = 0; i < 6; i++) {
-    //   let angle = rectAngle(i, squares.length);
-    //   //squares[i] = new Card(angle);
-    //   ctx.beginPath();
-    //   //ctx.moveTo(100, 100);
-    //   //ctx.clearRect(0, 0, 110, 110, [0, 0, 0, 0]);
-    //   ctx.roundRect(center.x, center.y, 50, 50, [10, 10, 10, 10]);
-    //   ctx.rotate(angle);
-    //   ctx.fill();
-    //   //console.log(squares)
-    // }
-  }, [canvaswidth, canvasheight])
+  }, [canvaswidth, canvasheight, animate])
 
   return canvasRef
 }
