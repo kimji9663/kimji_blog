@@ -17,34 +17,31 @@ const globalStyle = css({
 
 
 class Card {
-  constructor(canvaswidth, canvasheight) {
+  constructor(canvaswidth, canvasheight, i) {
     this.centerX = canvaswidth / 2
     this.centerY = canvasheight / 2
+    this.radian = i * 0.38
+    this.VELOCITY = 0.005
   }
   drawCard(ctx) {
-    //const squares = [];
-    
-    // const rectAngle = (index, length) => {
-    //   let per = 360 / length * index;
-    //   let result = per * Math.PI / 360;
-    //   return result;
-    // }
+    const sin = Math.sin(Math.PI / 4)
+    const cos = Math.cos(Math.PI / 4)
+    this.radian += this.VELOCITY
+    ctx.translate(500, 500)
 
     // for (let i = 0; i < 6; i++) {
-    //   let angle = rectAngle(i, squares.length)
-    //   //squares[i] = new Card(angle)
-    //   ctx.beginPath()
+    //   //ctx.beginPath()
     //   ctx.fillStyle = "#f79c9c"
-    //   ctx.clearRect(0, 0, 110, 110, [0, 0, 0, 0])
-    //   ctx.roundRect(this.centerX, this.centerY, 50, 50, [10, 10, 10, 10])
-    //   ctx.rotate(angle)
+    //   ctx.roundRect(0, 0, 200, 10, [20, 20, 20, 20])
+    //   ctx.transform(cos, sin, -sin, cos, 0, 0)
     //   ctx.fill()
-    //   //console.log(squares)
     // }
 
     ctx.beginPath()
     ctx.fillStyle = "#f79c9c"
-    ctx.roundRect(this.centerX, this.centerY, 200, 130, [20, 20, 20, 20])
+    //ctx.clearRect(0, 0, 200, 10)
+    ctx.roundRect(0, 0, 200, 10, [20, 20, 20, 20])
+    ctx.transform(cos, sin, -sin, cos, 0, 0)
     ctx.fill()
   }
 }
@@ -57,6 +54,8 @@ const RotateAnimation = ({ canvaswidth, canvasheight }) => {
   }
   const card = new Card(canvaswidth, canvasheight)
   const animate = (ctx) => {
+    ctx.clearRect(0, 0, canvaswidth, canvasheight)
+
     fillBackground(ctx)
     card.drawCard(ctx)
   }
