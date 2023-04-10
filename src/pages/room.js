@@ -4,6 +4,9 @@ import Seo from "../components/seo"
 import { Global, css } from "@emotion/react"
 import useElementPosition from '../components/useElementPosition'
 
+// img
+import video_room01 from '../images/video_room01.mp4'
+
 // css
 import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, Video } from "./room.styles"
 
@@ -51,7 +54,7 @@ const Room = ({ data, location }, props) => {
     const [textIndex, setTextIndex] = useState(0)
     const elementRef = useRef(null)
     const videoRef = useRef(null)
-    const totalFrames = 50
+    const totalFrames = 40
     const videoFrame = useElementPosition(elementRef, totalFrames, 1)
     let scrollPosition = 0
 
@@ -129,7 +132,6 @@ const Room = ({ data, location }, props) => {
                     return (
                       <HeaddingText key={i} section={i} index={textIndex}>
                         <h1>{headding}</h1>
-                        {/* <div>IMAGE AREA</div> */}
                       </HeaddingText>
                     )
                   })}
@@ -137,7 +139,8 @@ const Room = ({ data, location }, props) => {
               </HeaddingWrap>
               <Video>
                 <video ref={videoRef} autobuffer="autobuffer" preload="preload">
-                  <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="https://www.apple.com/media/us/mac-pro/2013/16C1b6b5-1d91-4fef-891e-ff2fc1c1bb58/videos/macpro_main_desktop.mp4"></source>
+                  {/* <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="https://www.apple.com/media/us/mac-pro/2013/16C1b6b5-1d91-4fef-891e-ff2fc1c1bb58/videos/macpro_main_desktop.mp4"></source> */}
+                  <source type="video/mp4; codecs=avc1" src={video_room01}></source>
                 </video>
               </Video>
             </VideoHeading>

@@ -91,12 +91,14 @@ export const HeaddingWrap = styled.div(({ index, datalength }) => ({
 
 export const Video = styled.div(() => ({
     display: 'flex',
+    overflow: 'hidden',
     width: '100%',
     height: '100%',
     flex: '1 0 50%',
     backgroundColor: '#000',
     '& > video': {
         width: '100%',
+        scale: '2',
     }
 }))
 
