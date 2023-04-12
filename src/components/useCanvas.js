@@ -21,7 +21,6 @@ export const useCanvas = (canvaswidth, canvasheight, animate) => {
       }
     }
     setCanvas()
-    //animate(ctx)
 
     let requestId = 0
     const requestAnimation = () => {
