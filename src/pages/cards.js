@@ -4,6 +4,14 @@ import { Global, css } from "@emotion/react"
 import { useClientWidthHeight } from "../components/useClientWidthHeight"
 import { useCanvas } from "../components/useCanvas"
 
+// img
+import img_card_1 from '../images/card01.png'
+import img_card_2 from '../images/card02.png'
+import img_card_3 from '../images/card03.png'
+import img_card_4 from '../images/card04.png'
+import img_card_5 from '../images/card05.png'
+import img_card_6 from '../images/card06.png'
+
 // css
 import { Main } from "./cards.styles"
 
@@ -15,44 +23,39 @@ const globalStyle = css({
   },
 })
 
+const cardImages = [img_card_1, img_card_2, img_card_3, img_card_4, img_card_5, img_card_6]
+
 class Card {
-  constructor(CARD_GAP, i, canvaswidth, canvasheight) {
-    //this.cardCenterX = CARD_GAP * i
+  constructor(i, canvaswidth, canvasheight) {
     this.radian = i * 6.28
     this.Rotate = (i+1) * 60
     this.CENTER_LINE_X = canvaswidth / 2
     this.CENTER_LINE_Y = canvasheight / 2
-    this.VELOCITY = 0.001
+    this.VELOCITY = 0.005
     this.AMPLITUDE = canvasheight / 3
-    this.CARD_RADIUS = canvaswidth / 600 < 4 ? 4 : canvaswidth / 600
-    this.cardCenterX = this.AMPLITUDE * Math.cos(i * 6.28) + this.CENTER_LINE_X
-    this.cardCenterY = this.AMPLITUDE * Math.sin(i * 6.28) + this.CENTER_LINE_Y
-    this.sin = Math.sin(Math.PI / 6)
-    this.cos = Math.cos(Math.PI / 6)
-    console.log(i.length)
+    this.cardCenterX = this.AMPLITUDE * Math.cos(this.radian) + this.CENTER_LINE_X
+    this.cardCenterY = this.AMPLITUDE * Math.sin(this.radian) + this.CENTER_LINE_Y
+    this.index = i
   }
 
   drawCard(ctx) {
-    //this.radian += this.VELOCITY
-    //this.cardCenterXX = this.AMPLITUDE * Math.cos(this.radian) + this.CENTER_LINE_X
-    //this.cardCenterYY = this.AMPLITUDE * Math.sin(this.radian) + this.CENTER_LINE_Y
+    this.radian += this.VELOCITY
+    
+    const image = new Image()
+    image.src = cardImages[this.index] 
+    const pattern = ctx.createPattern(image, 'repeat')
+    
 
     ctx.beginPath()
-    ctx.fillStyle = 'rgb(226 174 174)'
-    //ctx.rotate(Math.PI / 180 * 0.015)
-    // for(let i = 0; i < this.card_number; i++){
-    //   ctx.translate(this.CENTER_LINE_X, this.CENTER_LINE_Y)
-    //   ctx.rotate(Math.PI / 180 * this.Rotate)
-    //   ctx.translate(-this.CENTER_LINE_X, -this.CENTER_LINE_Y)
-    //   ctx.roundRect(this.cardCenterX - 25, this.cardCenterY - 100, 50, 200, [20, 20, 20, 20])
-    // }
+    //ctx.fillStyle = `rgba(226 174 174 / ${this.index + 1}0%)`
+    ctx.fillStyle = pattern
     ctx.translate(this.CENTER_LINE_X, this.CENTER_LINE_Y)
     ctx.rotate(Math.PI / 180 * this.Rotate)
+    ctx.rotate(this.radian)
     ctx.translate(-this.CENTER_LINE_X, -this.CENTER_LINE_Y)
-    ctx.roundRect(this.cardCenterX - 25, this.cardCenterY - 100, 50, 200, [20, 20, 20, 20])
+    ctx.roundRect(this.cardCenterX - 100, this.cardCenterY - 65, 200, 130, [20, 20, 20, 20])
     ctx.setTransform(1, 0, 0, 1, 0, 0)
     ctx.fill()
-
   }
 }
 
@@ -63,7 +66,7 @@ const RotateAnimation = ({ canvaswidth, canvasheight }) => {
     ctx.fillRect(0, 0, canvaswidth, canvasheight)
 
     ctx.beginPath()
-    ctx.strokeStyle = 'blue'
+    ctx.strokeStyle = 'rgba(255 255 255 / 20%)'
     ctx.arc(canvaswidth / 2, canvasheight / 2, canvasheight / 3, 0, 2 * Math.PI)
     ctx.stroke()
   }
@@ -71,10 +74,9 @@ const RotateAnimation = ({ canvaswidth, canvasheight }) => {
   let cards = []
   const initCard = () => {
     const CARD_NUMBER = 6
-    const CARD_GAP = canvaswidth / CARD_NUMBER
 
     for (let i = 0; i < CARD_NUMBER; i++){
-      const card = new Card(CARD_GAP, i, canvaswidth, canvasheight)
+      const card = new Card(i, canvaswidth, canvasheight)
       cards.push(card)
     }
   }
