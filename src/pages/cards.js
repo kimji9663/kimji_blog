@@ -33,6 +33,8 @@ class Card {
     this.CENTER_LINE_Y = canvasheight / 2
     this.VELOCITY = 0.005
     this.AMPLITUDE = canvasheight / 3
+    this.CARD_WIDTH = canvaswidth / 8 > 200 ? 200 : canvaswidth / 8
+    this.CARD_HEIGHT = this.CARD_WIDTH * 0.65
     this.cardCenterX = this.AMPLITUDE * Math.cos(this.radian) + this.CENTER_LINE_X
     this.cardCenterY = this.AMPLITUDE * Math.sin(this.radian) + this.CENTER_LINE_Y
     this.index = i
@@ -49,7 +51,7 @@ class Card {
     ctx.rotate(Math.PI / 180 * this.Rotate)
     ctx.rotate(this.radian)
     ctx.translate(-this.CENTER_LINE_X, -this.CENTER_LINE_Y)
-    ctx.drawImage(image, this.cardCenterX - 100, this.cardCenterY - 65, 200, 130)
+    ctx.drawImage(image, this.cardCenterX - this.CARD_WIDTH / 2, this.cardCenterY - this.CARD_HEIGHT / 2, this.CARD_WIDTH, this.CARD_HEIGHT)
     ctx.setTransform(1, 0, 0, 1, 0, 0)
     ctx.fill()
   }
