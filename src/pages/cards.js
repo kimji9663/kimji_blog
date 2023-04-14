@@ -42,18 +42,14 @@ class Card {
     this.radian += this.VELOCITY
     
     const image = new Image()
-    image.src = cardImages[this.index] 
-    const pattern = ctx.createPattern(image, 'repeat')
+    image.src = cardImages[this.index]
     
-
     ctx.beginPath()
-    //ctx.fillStyle = `rgba(226 174 174 / ${this.index + 1}0%)`
-    ctx.fillStyle = pattern
     ctx.translate(this.CENTER_LINE_X, this.CENTER_LINE_Y)
     ctx.rotate(Math.PI / 180 * this.Rotate)
     ctx.rotate(this.radian)
     ctx.translate(-this.CENTER_LINE_X, -this.CENTER_LINE_Y)
-    ctx.roundRect(this.cardCenterX - 100, this.cardCenterY - 65, 200, 130, [20, 20, 20, 20])
+    ctx.drawImage(image, this.cardCenterX - 100, this.cardCenterY - 65, 200, 130)
     ctx.setTransform(1, 0, 0, 1, 0, 0)
     ctx.fill()
   }
