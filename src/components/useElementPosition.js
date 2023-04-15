@@ -14,7 +14,7 @@ const useElementPosition = (element, frames, initialValue) => {
         let height = rect.height - (window.innerHeight * 3);
         let finalPercentage = Math.floor((frames * mainVal) / window.innerHeight); // 1 ~ 40
         setPosition(finalPercentage <= frames ? finalPercentage : frames);
-        console.log(frames, mainVal, rect.top, rect.height, finalPercentage)
+        console.log(frames, mainVal, rect.height, finalPercentage) //finalPercentage가 100%로면 40 이어야하는데 122가 넘어감. 이 문제 해결해야함
     }
 
     return position || 1
