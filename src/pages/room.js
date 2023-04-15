@@ -61,7 +61,7 @@ const Room = ({ data, location }, props) => {
     const videoScroll = () => {
       scrollPosition = videoFrame
       videoRef.current.currentTime = scrollPosition;
-      console.log(scrollPosition)
+      //console.log(scrollPosition)
     };
 
     const scrollTop = () => {

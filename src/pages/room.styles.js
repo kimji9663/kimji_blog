@@ -5,7 +5,7 @@ import { mq } from '../constants/index'
 export const Main = styled.div(() => ({
     position: 'relative',
     width: '100%',
-    height: '600vh',
+    height: '400vh',
 }));
 
 export const MainInner = styled.div(() => ({

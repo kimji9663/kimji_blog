@@ -11,10 +11,10 @@ const useElementPosition = (element, frames, initialValue) => {
     function getFrameRates(){
         let rect = element.current.getBoundingClientRect();
         let mainVal = rect.top <= 0 ? Math.abs(rect.top) : 0;
-        let height = rect.height - window.innerHeight;
-        let finalPercentage = Math.floor((frames * mainVal) / height); // 1 ~ 144
+        let height = rect.height - (window.innerHeight * 3);
+        let finalPercentage = Math.floor((frames * mainVal) / window.innerHeight); // 1 ~ 40
         setPosition(finalPercentage <= frames ? finalPercentage : frames);
-        //console.log(position, finalPercentage)
+        console.log(frames, mainVal, rect.top, rect.height, finalPercentage)
     }
 
     return position || 1
