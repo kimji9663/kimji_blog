@@ -65,7 +65,9 @@ export const VideoHeading = styled.div(({ index }) => mq({
     display: 'flex',
     flexDirection: [ 'column', 'column', 'row' ],
     alignItems: 'center',
-    backgroundColor: index === 0 ? '#ffeece' : (index === 1 ? '#ffefe5' : (index === 2 ? '#eaeaea' : '#fffeee')),
+    background: [index === 0 ? 'linear-gradient(to bottom, #424d3e, #000 15%, #000)' : (index === 1 ? 'linear-gradient(to bottom, #53533d, #000 15%, #000)' : (index === 2 ? 'linear-gradient(to bottom, #383d08, #000 15%, #000)' : 'linear-gradient(to bottom, #093f2e, #000 15%, #000)')),
+    index === 0 ? 'linear-gradient(to bottom, #424d3e, #000 15%, #000)' : (index === 1 ? 'linear-gradient(to bottom, #53533d, #000 15%, #000)' : (index === 2 ? 'linear-gradient(to bottom, #383d08, #000 15%, #000)' : 'linear-gradient(to bottom, #093f2e, #000 15%, #000)')),
+    index === 0 ? 'linear-gradient(to right, #424d3e, #000 15%, #000)' : (index === 1 ? 'linear-gradient(to right, #53533d, #000 15%, #000)' : (index === 2 ? 'linear-gradient(to right, #383d08, #000 15%, #000)' : 'linear-gradient(to right, #093f2e, #000 15%, #000)'))],
     width: '100%',
     height: '100%',
 }));
@@ -89,7 +91,7 @@ export const HeaddingWrap = styled.div(({ index, datalength }) => ({
     }
 }));
 
-export const Video = styled.div(() => ({
+export const Video = styled.div(() => mq({
     display: 'flex',
     overflow: 'hidden',
     width: '100%',
@@ -98,7 +100,7 @@ export const Video = styled.div(() => ({
     backgroundColor: '#000',
     '& > video': {
         width: '100%',
-        scale: '2',
+        scale: ['1.2', '1.2', '2'],
     }
 }))
 
@@ -116,7 +118,8 @@ export const HeaddingText = styled.div(({ section, index, mode }) => mq({
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
-        color: ['green', 'gray', 'hotpink'],
+        color: ['green', 'gray', '#acd0be'],
+        fontSize: ['40px', '60px', '80px'],
         textAlign: 'center',
         opacity: section === index ? 1 : 0,
         top: section === index ? '-50px' : '50px',

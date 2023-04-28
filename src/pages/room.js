@@ -9,7 +9,7 @@ import video_room01 from '../images/video_room01.mp4'
 //import video_room01 from '../images/sample-low.mp4'
 
 // css
-import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, Video } from "./room.styles"
+import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, Video } from "../style/room.styles"
 
 //const ConButton = Container.withComponent("button");
 
@@ -26,7 +26,7 @@ const globalStyle = css({
   'body': {
     margin: 0,
     padding: 0,
-    background: '#ecebeb',
+    background: '#000',
     color: '#777',
   },
   'body.prevent_scroll': {
@@ -37,7 +37,7 @@ const globalStyle = css({
 
 const headingData = [
   {
-    headding: `section01...!`
+    headding: `Let me introduce My room.`
   },
   {
     headding: `section02...!`
@@ -101,7 +101,7 @@ const Room = ({ data, location }, props) => {
     // }, []);
 
 
-    loading ? document.body.classList = 'prevent_scroll' : document.body.classList = ''
+    //loading ? document.body.classList = 'prevent_scroll' : document.body.classList = ''
 
     useEffect(() => {
       let textPercentage = Math.floor((headingData.length * videoFrame) / totalFrames * 10 ) // 0 ~ 4
