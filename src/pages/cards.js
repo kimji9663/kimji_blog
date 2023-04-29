@@ -13,13 +13,14 @@ import img_card_5 from '../images/card05.png'
 import img_card_6 from '../images/card06.png'
 
 // css
-import { Main } from "./cards.styles"
+import { Main } from "../style/cards.styles"
 
 const globalStyle = css({
   'body': {
     margin: 0,
     padding: 0,
     overflow: 'hidden',
+    backgroundColor: 'rgb(139 139 208)',
   },
 })
 
@@ -27,12 +28,14 @@ const cardImages = [img_card_1, img_card_2, img_card_3, img_card_4, img_card_5, 
 
 class Card {
   constructor(i, canvaswidth, canvasheight) {
-    this.radian = i * 6.28
-    this.Rotate = (i+1) * 60
+    this.radian = i * 6.28 // 회전 시 카드 기울임
+    this.Rotate = (i+1) * 60 // 간격
     this.CENTER_LINE_X = canvaswidth / 2
     this.CENTER_LINE_Y = canvasheight / 2
-    this.VELOCITY = 0.005
-    this.AMPLITUDE = canvasheight / 3
+    this.VELOCITY = 0.005 // 속도
+    this.AMPLITUDE = canvaswidth / 3.75 > 318 ? 318 : canvaswidth / 3.75
+    this.CARD_WIDTH = canvaswidth / 5 > 200 ? 200 : canvaswidth / 5
+    this.CARD_HEIGHT = this.CARD_WIDTH * 0.65
     this.cardCenterX = this.AMPLITUDE * Math.cos(this.radian) + this.CENTER_LINE_X
     this.cardCenterY = this.AMPLITUDE * Math.sin(this.radian) + this.CENTER_LINE_Y
     this.index = i
@@ -42,18 +45,14 @@ class Card {
     this.radian += this.VELOCITY
     
     const image = new Image()
-    image.src = cardImages[this.index] 
-    const pattern = ctx.createPattern(image, 'repeat')
+    image.src = cardImages[this.index]
     
-
     ctx.beginPath()
-    //ctx.fillStyle = `rgba(226 174 174 / ${this.index + 1}0%)`
-    ctx.fillStyle = pattern
     ctx.translate(this.CENTER_LINE_X, this.CENTER_LINE_Y)
     ctx.rotate(Math.PI / 180 * this.Rotate)
     ctx.rotate(this.radian)
     ctx.translate(-this.CENTER_LINE_X, -this.CENTER_LINE_Y)
-    ctx.roundRect(this.cardCenterX - 100, this.cardCenterY - 65, 200, 130, [20, 20, 20, 20])
+    ctx.drawImage(image, this.cardCenterX - this.CARD_WIDTH / 2, this.cardCenterY - this.CARD_HEIGHT / 2, this.CARD_WIDTH, this.CARD_HEIGHT)
     ctx.setTransform(1, 0, 0, 1, 0, 0)
     ctx.fill()
   }
@@ -61,16 +60,6 @@ class Card {
 
 
 const RotateAnimation = ({ canvaswidth, canvasheight }) => {
-  const fillBackground = (ctx) => {
-    ctx.fillStyle = 'rgb(139 139 208)'
-    ctx.fillRect(0, 0, canvaswidth, canvasheight)
-
-    ctx.beginPath()
-    ctx.strokeStyle = 'rgba(255 255 255 / 20%)'
-    ctx.arc(canvaswidth / 2, canvasheight / 2, canvasheight / 3, 0, 2 * Math.PI)
-    ctx.stroke()
-  }
-
   let cards = []
   const initCard = () => {
     const CARD_NUMBER = 6
@@ -85,8 +74,7 @@ const RotateAnimation = ({ canvaswidth, canvasheight }) => {
   }
 
   const animate = (ctx) => {
-    fillBackground(ctx)
-    //ctx.clearRect(0, 0, canvaswidth, canvasheight)
+    ctx.clearRect(0, 0, canvaswidth, canvasheight)
 
     for (let i = 0; i < cards.length; i++){
       cards[i].drawCard(ctx)

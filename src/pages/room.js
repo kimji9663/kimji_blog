@@ -6,9 +6,10 @@ import useElementPosition from '../components/useElementPosition'
 
 // img
 import video_room01 from '../images/video_room01.mp4'
+//import video_room01 from '../images/sample-low.mp4'
 
 // css
-import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, Video } from "./room.styles"
+import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, Video } from "../style/room.styles"
 
 //const ConButton = Container.withComponent("button");
 
@@ -25,7 +26,7 @@ const globalStyle = css({
   'body': {
     margin: 0,
     padding: 0,
-    background: '#ecebeb',
+    background: '#000',
     color: '#777',
   },
   'body.prevent_scroll': {
@@ -36,7 +37,7 @@ const globalStyle = css({
 
 const headingData = [
   {
-    headding: `section01...!`
+    headding: `Let me introduce My room.`
   },
   {
     headding: `section02...!`
@@ -54,14 +55,14 @@ const Room = ({ data, location }, props) => {
     const [textIndex, setTextIndex] = useState(0)
     const elementRef = useRef(null)
     const videoRef = useRef(null)
-    const totalFrames = 40
-    const videoFrame = useElementPosition(elementRef, totalFrames, 1)
+    const totalFrames = 200
+    const videoFrame = useElementPosition(elementRef, totalFrames, 0)
     let scrollPosition = 0
 
     const videoScroll = () => {
       scrollPosition = videoFrame
       videoRef.current.currentTime = scrollPosition;
-      console.log(scrollPosition)
+      //console.log(videoRef.current.currentTime, scrollPosition)
     };
 
     const scrollTop = () => {
@@ -100,12 +101,13 @@ const Room = ({ data, location }, props) => {
     // }, []);
 
 
-    loading ? document.body.classList = 'prevent_scroll' : document.body.classList = ''
+    //loading ? document.body.classList = 'prevent_scroll' : document.body.classList = ''
 
     useEffect(() => {
-      let textPercentage = Math.floor((headingData.length * videoFrame) / totalFrames ) // 0 ~ 4
-      if (textPercentage < headingData.length) setTextIndex(textPercentage)
+      let textPercentage = Math.floor((headingData.length * videoFrame) / totalFrames * 10 ) // 0 ~ 4
+      textPercentage < headingData.length ? setTextIndex(textPercentage) : setTextIndex(3)
       videoScroll(); // video scroll
+      console.log('###', videoFrame, totalFrames, textPercentage)
     }, [videoFrame])
 
 
@@ -140,13 +142,14 @@ const Room = ({ data, location }, props) => {
               <Video>
                 <video ref={videoRef} autobuffer="autobuffer" preload="preload">
                   {/* <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="https://www.apple.com/media/us/mac-pro/2013/16C1b6b5-1d91-4fef-891e-ff2fc1c1bb58/videos/macpro_main_desktop.mp4"></source> */}
-                  <source type="video/mp4; codecs=avc1" src={video_room01}></source>
+                  {/* <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="http://www.donhkoland.com/clients/bluesmart/website/test/videoscroll/vide_01.mp4"></source> */}
+                  <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src={video_room01}></source>
                 </video>
               </Video>
             </VideoHeading>
           </MainInner>
         </Main>
-        <div>
+        {/* <div>
           fuggjkgh
           <br />
           fuggjkgh
@@ -155,7 +158,7 @@ const Room = ({ data, location }, props) => {
           <br />
           fuggjkgh
           <br />
-        </div>
+        </div> */}
         {/* <UserButton /> */}
       </>
     )

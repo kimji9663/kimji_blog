@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const useElementPosition = (element, frames, initialValue) => {
-    const [position, setPosition] = useState(initialValue || 1)
+    const [position, setPosition] = useState(initialValue || 0)
 
     useEffect(() => {
         window.addEventListener('scroll', getFrameRates)
@@ -9,15 +9,15 @@ const useElementPosition = (element, frames, initialValue) => {
     }, [])
 
     function getFrameRates(){
-        let rect = element.current.getBoundingClientRect();
-        let mainVal = rect.top <= 0 ? Math.abs(rect.top) : 0;
-        let height = rect.height - window.innerHeight;
-        let finalPercentage = Math.floor((frames * mainVal) / height); // 1 ~ 144
-        setPosition(finalPercentage <= frames ? finalPercentage : frames);
-        //console.log(position, finalPercentage)
+        let rect = element.current.getBoundingClientRect()
+        let mainVal = rect.top <= 0 ? Math.abs(rect.top) : 0
+        let height = rect.height - window.innerHeight
+        let finalPercentage = (frames / 10 * mainVal) / height // 1 ~ 40
+        setPosition(finalPercentage <= frames ? finalPercentage : frames)
+        console.log(finalPercentage, mainVal, rect.height, window.innerHeight)
     }
 
-    return position || 1
+    return position || 0
 }
 
 export default useElementPosition
