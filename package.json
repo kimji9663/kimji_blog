@@ -13,7 +13,7 @@
     "@heroicons/react": "^1.0.5",
     "facepaint": "^1.2.1",
     "gatsby": "^4.4.0",
-    "gatsby-plugin-emotion": "^8.7.0",
+    "gatsby-plugin-emotion": "^7.4.0",
     "gatsby-plugin-feed": "^4.4.0",
     "gatsby-plugin-gatsby-cloud": "^4.4.0",
     "gatsby-plugin-google-analytics": "^4.4.0",
