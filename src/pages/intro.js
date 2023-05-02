@@ -1,10 +1,10 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import TweenComponent from '../components/TweenComponent';
 
 const Intro = () => {
 
   return (
-    <Fragment>
+    <>
       <div className="top-intro">
         <div className="inner">
           <TweenComponent></TweenComponent>
@@ -150,7 +150,7 @@ const Intro = () => {
           </div>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 
