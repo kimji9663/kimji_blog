@@ -14,7 +14,7 @@ const useElementPosition = (element, frames, initialValue) => {
         let height = rect.height - window.innerHeight
         let finalPercentage = (frames / 10 * mainVal) / height // 1 ~ 40
         setPosition(finalPercentage <= frames ? finalPercentage : frames)
-        console.log(finalPercentage, mainVal, rect.height, window.innerHeight)
+        //console.log(finalPercentage, mainVal, rect.height, window.innerHeight)
     }
 
     return position || 0

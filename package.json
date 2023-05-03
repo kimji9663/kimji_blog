@@ -39,7 +39,8 @@
     "react-responsive": "^9.0.0-beta.5",
     "react-scrollmagic": "^2.3.0",
     "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.75"
+    "typeface-montserrat": "0.0.75",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "prettier": "^2.4.1"

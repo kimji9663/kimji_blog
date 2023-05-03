@@ -14,7 +14,7 @@ import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, Video } from
 //const ConButton = Container.withComponent("button");
 
 const UserButton = props => (
-  <div>
+  <div style={{ marginTop: '50px' }}>
     button!!!
     <span>0</span>
     <span>0</span>
@@ -40,13 +40,13 @@ const headingData = [
     headding: `Let me introduce My room.`
   },
   {
-    headding: `section02...!`
+    headding: `This is my desktop.`
   },
   {
-    headding: `section03...!`
+    headding: `And my friend Reo!`
   },
   {
-    headding: `section04...!`
+    headding: `Here's all things of my favorites.`
   },
 ]
 
@@ -59,8 +59,8 @@ const Room = ({ data, location }, props) => {
     const videoFrame = useElementPosition(elementRef, totalFrames, 0)
     let scrollPosition = 0
 
-    const videoScroll = () => {
-      scrollPosition = videoFrame
+    const videoScroll = (datalength) => {
+      scrollPosition = videoFrame / datalength
       videoRef.current.currentTime = scrollPosition;
       //console.log(videoRef.current.currentTime, scrollPosition)
     };
@@ -106,7 +106,7 @@ const Room = ({ data, location }, props) => {
     useEffect(() => {
       let textPercentage = Math.floor((headingData.length * videoFrame) / totalFrames * 10 ) // 0 ~ 4
       textPercentage < headingData.length ? setTextIndex(textPercentage) : setTextIndex(3)
-      videoScroll(); // video scroll
+      videoScroll(headingData.length); // video scroll
       console.log('###', videoFrame, totalFrames, textPercentage)
     }, [videoFrame])
 
@@ -139,7 +139,7 @@ const Room = ({ data, location }, props) => {
                   })}
                 </div>
               </HeaddingWrap>
-              <Video>
+              <Video index={textIndex}>
                 <video ref={videoRef} autobuffer="autobuffer" preload="preload">
                   {/* <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="https://www.apple.com/media/us/mac-pro/2013/16C1b6b5-1d91-4fef-891e-ff2fc1c1bb58/videos/macpro_main_desktop.mp4"></source> */}
                   {/* <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="http://www.donhkoland.com/clients/bluesmart/website/test/videoscroll/vide_01.mp4"></source> */}
@@ -149,16 +149,6 @@ const Room = ({ data, location }, props) => {
             </VideoHeading>
           </MainInner>
         </Main>
-        {/* <div>
-          fuggjkgh
-          <br />
-          fuggjkgh
-          <br />
-          fuggjkgh
-          <br />
-          fuggjkgh
-          <br />
-        </div> */}
         {/* <UserButton /> */}
       </>
     )
