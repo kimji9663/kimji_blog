@@ -5,7 +5,7 @@ import { mq } from '../constants/index'
 export const Main = styled.div(() => ({
     position: 'relative',
     width: '100%',
-    height: '400vh',
+    height: '800vh',
 }));
 
 export const MainInner = styled.div(() => ({
@@ -65,9 +65,9 @@ export const VideoHeading = styled.div(({ index }) => mq({
     display: 'flex',
     flexDirection: [ 'column', 'column', 'row' ],
     alignItems: 'center',
-    background: [index === 0 ? 'linear-gradient(to bottom, #424d3e, #000 15%, #000)' : (index === 1 ? 'linear-gradient(to bottom, #53533d, #000 15%, #000)' : (index === 2 ? 'linear-gradient(to bottom, #383d08, #000 15%, #000)' : 'linear-gradient(to bottom, #093f2e, #000 15%, #000)')),
-    index === 0 ? 'linear-gradient(to bottom, #424d3e, #000 15%, #000)' : (index === 1 ? 'linear-gradient(to bottom, #53533d, #000 15%, #000)' : (index === 2 ? 'linear-gradient(to bottom, #383d08, #000 15%, #000)' : 'linear-gradient(to bottom, #093f2e, #000 15%, #000)')),
-    index === 0 ? 'linear-gradient(to right, #424d3e, #000 15%, #000)' : (index === 1 ? 'linear-gradient(to right, #53533d, #000 15%, #000)' : (index === 2 ? 'linear-gradient(to right, #383d08, #000 15%, #000)' : 'linear-gradient(to right, #093f2e, #000 15%, #000)'))],
+    background: [index === 0 ? 'linear-gradient(to bottom, #362c1b, #000 50%, #000)' : (index === 1 ? 'linear-gradient(to bottom, #313939, #000 50%, #000)' : (index === 2 ? 'linear-gradient(to bottom, #48321f, #000 50%, #000)' : 'linear-gradient(to bottom, #063224, #000 50%, #000)')),
+    index === 0 ? 'linear-gradient(to bottom, #362c1b, #000 50%, #000)' : (index === 1 ? 'linear-gradient(to bottom, #313939, #000 50%, #000)' : (index === 2 ? 'linear-gradient(to bottom, #48321f, #000 50%, #000)' : 'linear-gradient(to bottom, #063224, #000 50%, #000)')),
+    index === 0 ? 'linear-gradient(to right, #362c1b, #000 50%, #000)' : (index === 1 ? 'linear-gradient(to right, #313939, #000 50%, #000)' : (index === 2 ? 'linear-gradient(to right, #48321f, #000 50%, #000)' : 'linear-gradient(to right, #063224, #000 50%, #000)'))],
     width: '100%',
     height: '100%',
 }));
@@ -76,7 +76,7 @@ export const HeaddingWrap = styled.div(({ index, datalength }) => ({
     position: 'relative',
     width: '100%',
     height: '100%',
-    overflow: 'hidden',
+    //overflow: 'hidden',
     flex: '1 0 50%',
     '& > div': {
         display: 'flex',
@@ -91,7 +91,7 @@ export const HeaddingWrap = styled.div(({ index, datalength }) => ({
     }
 }));
 
-export const Video = styled.div(() => mq({
+export const Video = styled.div(({ index }) => mq({
     display: 'flex',
     overflow: 'hidden',
     width: '100%',
@@ -100,17 +100,20 @@ export const Video = styled.div(() => mq({
     backgroundColor: '#000',
     '& > video': {
         width: '100%',
-        scale: ['1.2', '1.2', '2'],
+        scale: ['1.2', '1.2', index === 1 ? '4' : (index === 2 ? '4' : '2')],
+        transition: 'all 0.5s linear',
+        transform: index === 1 ? 'translate3d(80px, -30px, 0)' : (index === 2 ? 'translate3d(-60px, 10px, 0)' : 'none'),
     }
 }))
 
-export const HeaddingText = styled.div(({ section, index, mode }) => mq({
+export const HeaddingText = styled.div(({ section, index }) => mq({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: [ 'column', 'column', 'row' ],
     width: '100%',
     height: '100%',
+    boxShadow: '10px 0px 20px #00000080',
     '& > h1': {
         flex: '1 1 auto',
         order: index % 2 === 1 ? 2 : 1,
@@ -118,12 +121,14 @@ export const HeaddingText = styled.div(({ section, index, mode }) => mq({
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
-        color: ['green', 'gray', '#acd0be'],
+        //color: ['green', 'gray', '#64f0aa'],
+        color: index === 0 ? '#eab45e' : (index === 1 ? '#dddddd' : (index === 2 ? '#ffbc85' : '#64f0aa')),
         fontSize: ['40px', '60px', '80px'],
         textAlign: 'center',
         opacity: section === index ? 1 : 0,
         top: section === index ? '-50px' : '50px',
         transition: 'opacity, top 1s ease',
+        animation: index === 3 ? `${flicker} 12s linear infinite` : 'none',
     },
     '& > div': {
         flex: '1 1 auto',
@@ -143,4 +148,19 @@ export const slime = keyframes`
     50% {border-radius: 75% 35% 35% 72%/58% 51% 56% 49%}
     75% {border-radius: 71% 52% 69% 31%/69% 52% 79% 58%}
     100% {border-radius: 36% 64% 63% 37%/54% 60% 44% 48%}
+`
+
+
+export const flicker = keyframes`
+    0% {opacity: 0.9}
+    9% {opacity: 0.3}
+    12% {opacity: 1}
+    20% {opacity: 0.5}
+    25% {opacity: 0.3}
+    30% {opacity: 1}
+    66% {opacity: 1}
+    70% {opacity: 0.7}
+    72% {opacity: 0.4}
+    77% {opacity: 0.9}
+    100% {opacity: 0.9}
 `
