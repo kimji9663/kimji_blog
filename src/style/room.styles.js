@@ -100,9 +100,11 @@ export const Video = styled.div(({ index }) => mq({
     backgroundColor: '#000',
     '& > video': {
         width: '100%',
-        scale: ['1.2', '1.2', index === 1 ? '4' : (index === 2 ? '4' : '2')],
+        scale: [index === 1 ? '3' : (index === 2 ? '3' : '1.2'), index === 1 ? '3' : (index === 2 ? '3' : '1.2'), index === 1 ? '4' : (index === 2 ? '4' : '2')],
         transition: 'all 0.5s linear',
-        transform: index === 1 ? 'translate3d(80px, -30px, 0)' : (index === 2 ? 'translate3d(-60px, 10px, 0)' : 'none'),
+        transform: [index === 1 ? 'translate3d(50px, -30px, 0)' : (index === 2 ? 'translate3d(-30px, 0px, 0)' : 'none'), 
+        index === 1 ? 'translate3d(50px, -30px, 0)' : (index === 2 ? 'translate3d(-30px, 0px, 0)' : 'none'), 
+        index === 1 ? 'translate3d(80px, -30px, 0)' : (index === 2 ? 'translate3d(-60px, 10px, 0)' : 'none')],
     }
 }))
 
