@@ -65,19 +65,19 @@ export const VideoHeading = styled.div(({ index }) => mq({
     display: 'flex',
     flexDirection: [ 'column', 'column', 'row' ],
     alignItems: 'center',
-    background: [index === 0 ? 'linear-gradient(to bottom, #362c1b, #000 50%, #000)' : (index === 1 ? 'linear-gradient(to bottom, #313939, #000 50%, #000)' : (index === 2 ? 'linear-gradient(to bottom, #48321f, #000 50%, #000)' : 'linear-gradient(to bottom, #063224, #000 50%, #000)')),
-    index === 0 ? 'linear-gradient(to bottom, #362c1b, #000 50%, #000)' : (index === 1 ? 'linear-gradient(to bottom, #313939, #000 50%, #000)' : (index === 2 ? 'linear-gradient(to bottom, #48321f, #000 50%, #000)' : 'linear-gradient(to bottom, #063224, #000 50%, #000)')),
+    background: [index === 0 ? 'linear-gradient(to bottom, #362c1b, #000 30%, #000)' : (index === 1 ? 'linear-gradient(to bottom, #313939, #000 30%, #000)' : (index === 2 ? 'linear-gradient(to bottom, #48321f, #000 30%, #000)' : 'linear-gradient(to bottom, #063224, #000 30%, #000)')),
+    index === 0 ? 'linear-gradient(to bottom, #362c1b, #000 30%, #000)' : (index === 1 ? 'linear-gradient(to bottom, #313939, #000 30%, #000)' : (index === 2 ? 'linear-gradient(to bottom, #48321f, #000 30%, #000)' : 'linear-gradient(to bottom, #063224, #000 30%, #000)')),
     index === 0 ? 'linear-gradient(to right, #362c1b, #000 50%, #000)' : (index === 1 ? 'linear-gradient(to right, #313939, #000 50%, #000)' : (index === 2 ? 'linear-gradient(to right, #48321f, #000 50%, #000)' : 'linear-gradient(to right, #063224, #000 50%, #000)'))],
     width: '100%',
     height: '100%',
 }));
 
-export const HeaddingWrap = styled.div(({ index, datalength }) => ({
+export const HeaddingWrap = styled.div(({ index, datalength }) => mq({
     position: 'relative',
     width: '100%',
     height: '100%',
     //overflow: 'hidden',
-    flex: '1 0 50%',
+    flex: ['1 0 40%', '1 0 40%', '1 0 50%'],
     '& > div': {
         display: 'flex',
         flexDirection: 'column',
@@ -96,11 +96,11 @@ export const Video = styled.div(({ index }) => mq({
     overflow: 'hidden',
     width: '100%',
     height: '100%',
-    flex: '1 0 50%',
+    flex: ['1 0 60%', '1 0 60%', '1 0 50%'],
     backgroundColor: '#000',
     '& > video': {
         width: '100%',
-        scale: [index === 1 ? '3' : (index === 2 ? '3' : '1.2'), index === 1 ? '3' : (index === 2 ? '3' : '1.2'), index === 1 ? '4' : (index === 2 ? '4' : '2')],
+        scale: [index === 1 ? '3' : (index === 2 ? '3' : '1.6'), index === 1 ? '3' : (index === 2 ? '3' : '1.6'), index === 1 ? '4' : (index === 2 ? '4' : '2')],
         transition: 'all 0.5s linear',
         transform: [index === 1 ? 'translate3d(50px, -30px, 0)' : (index === 2 ? 'translate3d(-30px, 0px, 0)' : 'none'), 
         index === 1 ? 'translate3d(50px, -30px, 0)' : (index === 2 ? 'translate3d(-30px, 0px, 0)' : 'none'), 
@@ -115,7 +115,9 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
     flexDirection: [ 'column', 'column', 'row' ],
     width: '100%',
     height: '100%',
-    boxShadow: '10px 0px 20px #00000080',
+    boxShadow: ['0px 14px 20px #00000080', '0px 14px 20px #00000080', '10px 0px 20px #00000080'],
+    opacity: section === index ? 1 : 0,
+
     '& > h1': {
         flex: '1 1 auto',
         order: index % 2 === 1 ? 2 : 1,
