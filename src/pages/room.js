@@ -11,7 +11,7 @@ import video_room01 from '../images/video_room01.mp4'
 // css
 import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, Video } from "../style/room.styles"
 
-//const ConButton = Container.withComponent("button");
+//const ConButton = Container.withComponent("button")
 
 const UserButton = props => (
   <div style={{ marginTop: '50px' }}>
@@ -50,8 +50,7 @@ const headingData = [
   },
 ]
 
-const Room = ({ data, location }, props) => {
-    //const siteTitle = data.site.siteMetadata?.title || `Title`
+const Room = () => {
     const [textIndex, setTextIndex] = useState(0)
     const elementRef = useRef(null)
     const videoRef = useRef(null)
@@ -61,23 +60,24 @@ const Room = ({ data, location }, props) => {
 
     const videoScroll = (datalength) => {
       scrollPosition = videoFrame / datalength
-      videoRef.current.currentTime = scrollPosition;
+      videoRef.current.currentTime = scrollPosition
       //console.log(videoRef.current.currentTime, scrollPosition)
-    };
+    }
 
     const scrollTop = () => {
       window.scrollTo({
           top: scrollPosition,
           behavior: 'smooth',
-      });
-  };
+      })
+  }
 
 
     // set loading
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true)
+    const loadingTime = 3000
 
     // const mainApi = async () => {
-    //   setLoading(true); // api 호출 전에 true로 변경하여 로딩화면 띄우기
+    //   setLoading(true) // api 호출 전에 true로 변경하여 로딩화면 띄우기
     //   try {
     //     const response = await fetch(`api url`, {
     //       method: 'POST',
@@ -86,19 +86,19 @@ const Room = ({ data, location }, props) => {
     //         'Content-Type': 'application/json',
     //       },
     //       body: JSON.stringify(),
-    //     });
+    //     })
 
-    //     const result = await response.json();
-    //     console.log('mainData', result);
-    //     setLoading(false); // api 호출 완료 됐을 때 false로 변경하려 로딩화면 숨김처리
+    //     const result = await response.json()
+    //     console.log('mainData', result)
+    //     setLoading(false) // api 호출 완료 됐을 때 false로 변경하려 로딩화면 숨김처리
     //   } catch (error) {
-    //     window.alert(error);
+    //     window.alert(error)
     //   }
-    // }; 
+    // } 
 
     // useEffect(() => {
-    //   mainApi();
-    // }, []);
+    //   mainApi()
+    // }, [])
 
 
     //loading ? document.body.classList = 'prevent_scroll' : document.body.classList = ''
@@ -106,16 +106,16 @@ const Room = ({ data, location }, props) => {
     useEffect(() => {
       let textPercentage = Math.floor((headingData.length * videoFrame) / totalFrames * 10 ) // 0 ~ 4
       textPercentage < headingData.length ? setTextIndex(textPercentage) : setTextIndex(3)
-      videoScroll(headingData.length); // video scroll
-      console.log('###', videoFrame, totalFrames, textPercentage)
+      videoScroll(headingData.length) // video scroll
+      //console.log('###', videoFrame, totalFrames, textPercentage)
     }, [videoFrame])
 
 
     useEffect(() => {
       setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-      scrollTop();
+        setLoading(false)
+      }, loadingTime)
+      scrollTop()
     }, [])
 
 
@@ -123,7 +123,7 @@ const Room = ({ data, location }, props) => {
       <>
         <Seo title="ROOM" />
         <Global styles={globalStyle} />
-        {loading ? <Loading /> : null}
+        {loading ? <Loading time={loadingTime} /> : null}
         
         <Main ref={elementRef}>
           <MainInner videoFrame={videoFrame}>
@@ -141,8 +141,6 @@ const Room = ({ data, location }, props) => {
               </HeaddingWrap>
               <Video index={textIndex}>
                 <video ref={videoRef} autobuffer="autobuffer" preload="preload">
-                  {/* <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="https://www.apple.com/media/us/mac-pro/2013/16C1b6b5-1d91-4fef-891e-ff2fc1c1bb58/videos/macpro_main_desktop.mp4"></source> */}
-                  {/* <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="http://www.donhkoland.com/clients/bluesmart/website/test/videoscroll/vide_01.mp4"></source> */}
                   <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src={video_room01}></source>
                 </video>
               </Video>

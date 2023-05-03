@@ -1,31 +1,42 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { Global, css } from "@emotion/react"
+import { Global, css, keyframes } from "@emotion/react"
 
-
-const Background = styled.div(() => ({
+const fadeOut = keyframes`
+  0% {opacity: 1}
+  100% {opacity: 0}
+`
+const Background = styled.div(({ delay }) => ({
   position: 'fixed',
   width: '100vw',
   height: '100vh',
   top: 0,
   left: 0,
-  background: '#ffffff',
+  background: '#000000',
   zIndex: 999,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
+  transition: 'opacity 1s linear',
+  animation: `1000ms linear ${delay}ms forwards ${fadeOut}`, // 2. 그 다음에 배경 사라짐
+  '& > p': {
+    transition: 'opacity 1s linear',
+    animation: `1000ms linear ${delay - 1000}ms forwards ${fadeOut}`, // 1. 이미지 먼저 사라지고
+  }
 }))
 
-const LoadingText = styled.p(() => ({
+const LoadingText = styled.p(({ delay }) => ({
   textAlign: 'center',
 }))
 
-const Loading = () => {
+const Loading = (loadingTime) => {
+  const delayTime = loadingTime.time - 1000 // 로딩화면 지속시간에서 사라짐 효과 보여줄 1초를 뺌 
+
   return (
     <>
-      <Background>
-        <LoadingText>Loading...</LoadingText>
+      <Background delay={delayTime}>
+        <LoadingText delay={delayTime}>Loading...</LoadingText>
         <p>
           <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style={{ margin: 'auto', display: 'block' }} width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
             <g transform="rotate(0 50 50)">
