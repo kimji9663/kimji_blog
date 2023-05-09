@@ -11,14 +11,15 @@ export const useCanvas = (canvaswidth, canvasheight, animate) => {
       const devicePixelRatio = window.devicePixelRatio ?? 1
 
       if(canvas && ctx) {
-        canvas.style.width = canvaswidth + 'px'
-        canvas.style.height = canvasheight + 'px'
+        //canvas.style.width = canvaswidth + 'px'
+        //canvas.style.height = canvasheight + 'px'
 
         canvas.width = canvaswidth * devicePixelRatio
         canvas.height = canvasheight * devicePixelRatio
 
         ctx.scale(devicePixelRatio, devicePixelRatio)
       }
+      console.log(devicePixelRatio)
     }
     setCanvas()
 
