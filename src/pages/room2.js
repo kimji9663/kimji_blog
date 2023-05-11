@@ -6,20 +6,12 @@ import useElementPosition from '../components/useElementPosition'
 
 // img
 import video_room01 from '../images/video_room01.mp4'
+//import video_room01 from '../images/sample-low.mp4'
 
 // css
 import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, Video } from "../style/room.styles"
 
 //const ConButton = Container.withComponent("button")
-
-const UserButton = props => (
-  <div style={{ marginTop: '50px' }}>
-    button!!!
-    <span>0</span>
-    <span>0</span>
-    <span>0</span>
-  </div>
-)
 
 const globalStyle = css({
   'body': {
@@ -49,64 +41,51 @@ const headingData = [
   },
 ]
 
-const Room = () => {
+const Room2 = () => {
     const [textIndex, setTextIndex] = useState(0)
     const elementRef = useRef(null)
-    const videoRef = useRef(null)
+    //const videoRef = useRef(null)
     const totalFrames = 200
-    const videoFrame = useElementPosition(elementRef, totalFrames, 0)
+    const videoFrame = Math.floor(useElementPosition(elementRef, totalFrames, 0))
+    const getImage = (frame) => (`https://www.apple.com/105/media/us/airpods-pro/2019/1299e2f5_9206_4470_b28e_08307a42f19b/anim/sequence/large/01-hero-lightpass/${frame.toString().padStart(4, '0')}.jpg`)
     let scrollPosition = 0
 
-    const videoScroll = (datalength) => {
-      scrollPosition = videoFrame / datalength
-      videoRef.current.currentTime = scrollPosition
-      //console.log(videoRef.current.currentTime, scrollPosition)
-    }
+    // const videoScroll = (datalength) => {
+    //   scrollPosition = videoFrame / datalength
+    //   videoRef.current.currentTime = scrollPosition
+    //   //console.log(videoRef.current.currentTime, scrollPosition)
+    // }
 
     const scrollTop = () => {
       window.scrollTo({
           top: scrollPosition,
           behavior: 'smooth',
       })
-  }
+    }
 
+    // function videoToBlob(localImage) {
+    //   let reader = new  FileReader()
+    //   reader.readAsArrayBuffer(localImage)
+
+    //   let buffer = reader.result
+    //   let videoBlob = new Blob([new Uint8Array(buffer)], { type: 'video/mp4' })
+    //   let url = window.URL.createObjectURL(videoBlob)
+    //   console.log(url)
+    // }
+
+    // useEffect(() => {
+    //   videoToBlob(video_room01)
+    // }, [])
 
     // set loading
     const [loading, setLoading] = useState(true)
     const loadingTime = 3000
 
-    // const mainApi = async () => {
-    //   setLoading(true) // api 호출 전에 true로 변경하여 로딩화면 띄우기
-    //   try {
-    //     const response = await fetch(`api url`, {
-    //       method: 'POST',
-    //       headers: {
-    //         Accept: 'application/json',
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify(),
-    //     })
-
-    //     const result = await response.json()
-    //     console.log('mainData', result)
-    //     setLoading(false) // api 호출 완료 됐을 때 false로 변경하려 로딩화면 숨김처리
-    //   } catch (error) {
-    //     window.alert(error)
-    //   }
-    // } 
-
-    // useEffect(() => {
-    //   mainApi()
-    // }, [])
-
-
-    //loading ? document.body.classList = 'prevent_scroll' : document.body.classList = ''
-
     useEffect(() => {
       let textPercentage = Math.floor((headingData.length * videoFrame) / totalFrames * 10 ) // 0 ~ 4
       textPercentage < headingData.length ? setTextIndex(textPercentage) : setTextIndex(3)
-      videoScroll(headingData.length) // video scroll
-      //console.log('###', videoFrame, totalFrames, textPercentage)
+      //videoScroll(headingData.length) // video scroll
+      console.log('###', videoFrame, totalFrames, textPercentage)
     }, [videoFrame])
 
 
@@ -120,7 +99,7 @@ const Room = () => {
 
     return (
       <>
-        <Seo title="ROOM" />
+        <Seo title="ROOM2" />
         <Global styles={globalStyle} />
         {loading ? <Loading time={loadingTime} /> : null}
         
@@ -138,17 +117,17 @@ const Room = () => {
                   })}
                 </div>
               </HeaddingWrap>
-              <Video index={textIndex}>
+              <img src={getImage(videoFrame)} alt=""/>
+              {/* <Video index={textIndex}>
                 <video ref={videoRef} autobuffer="autobuffer" preload="preload">
                   <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src={video_room01}></source>
                 </video>
-              </Video>
+              </Video> */}
             </VideoHeading>
           </MainInner>
         </Main>
-        {/* <UserButton /> */}
       </>
     )
 }
 
-export default Room
+export default Room2
