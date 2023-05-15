@@ -48,7 +48,7 @@ const Room2 = () => {
     const totalFrames = 200
     const videoFrame = Math.floor(useElementPosition(elementRef, totalFrames, 0))
     //const getImage = (frame) => (`https://www.apple.com/105/media/us/airpods-pro/2019/1299e2f5_9206_4470_b28e_08307a42f19b/anim/sequence/large/01-hero-lightpass/${frame.toString().padStart(4, '0')}.jpg`)
-    const getImage = (frame) => (`./images/hero-desktop.8e197ed_out0001.jpg`)
+    const getImage = (frame) => (`https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/card${frame.toString().padStart(2, '0')}.png`)
     let scrollPosition = 0
 
     // const videoScroll = (datalength) => {
