@@ -5,7 +5,7 @@ import { Global, css } from "@emotion/react"
 import useElementPosition from '../components/useElementPosition'
 
 // css
-import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, InfiniteMarquee } from "../style/room2.styles"
+import { Main, MainInner, VideoHeading, DoorOpening, HeaddingText, HeaddingWrap, InfiniteMarquee } from "../style/room2.styles"
 
 //const ConButton = Container.withComponent("button")
 
@@ -93,8 +93,13 @@ const Room2 = () => {
                   })}
                 </div>
               </HeaddingWrap>
+              <DoorOpening videoFrame={videoFrame} totalFrames={totalFrames}>
+                <div className="left"></div>
+                <div className="right"></div>
+              </DoorOpening>
             </VideoHeading>
             <InfiniteMarquee>
+              <span>Happy birthday to you!</span>
               <span>Happy birthday to you!</span>
               <span>Happy birthday to you!</span>
               <span>Happy birthday to you!</span>

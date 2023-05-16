@@ -66,6 +66,30 @@ export const VideoHeading = styled.div(({ index }) => mq({
     height: '100%',
     '& > img': {
         width: '100%',
+        opacity: '0.2',
+    },
+}))
+
+export const DoorOpening = styled.div(({ videoFrame, totalFrames }) => mq({
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+    '& > div': {
+        position: 'absolute',
+        width: '50%',
+        height: '100%',
+        backgroundImage: 'url(https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/window01.png)',
+        backgroundRepeat: 'repeat-x',
+        backgroundSize: 'auto 100%',
+    },
+    '& > .left': {
+        backgroundPosition: 'top right',
+        left: `-${videoFrame/totalFrames*1000/2}%`,
+    },
+    '& > .right': {
+        backgroundPosition: 'top left',
+        right: `-${videoFrame/totalFrames*1000/2}%`,
     },
 }))
 
@@ -74,9 +98,6 @@ export const HeaddingWrap = styled.div(({ index, datalength }) => mq({
     top: 0,
     width: '100%',
     height: '100%',
-    background: 'url(https://parspng.com/wp-content/uploads/2022/10/windowpng.parspng.com-5.png) center repeat-x',
-    //background: `url(${require("../images/window01.png")}) center repeat-x`,
-    backgroundSize: 'auto 100%',
     '& > div': {
         display: 'flex',
         flexDirection: 'column',
