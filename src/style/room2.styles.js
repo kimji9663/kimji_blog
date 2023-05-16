@@ -6,18 +6,14 @@ export const Main = styled.div(() => ({
     position: 'relative',
     width: '100%',
     height: '800vh',
-}));
+}))
 
 export const MainInner = styled.div(() => ({
     position: 'sticky',
     top: 0,
     width: '100%',
     height: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden',
-}));
+}))
 
 export const BackgroundImg1 = styled.div(({ total, index }) => ({
     position: 'absolute',
@@ -71,14 +67,16 @@ export const VideoHeading = styled.div(({ index }) => mq({
     '& > img': {
         width: '100%',
     },
-}));
+}))
 
 export const HeaddingWrap = styled.div(({ index, datalength }) => mq({
     position: 'absolute',
     top: 0,
     width: '100%',
     height: '100%',
-    //overflow: 'hidden',
+    background: 'url(https://parspng.com/wp-content/uploads/2022/10/windowpng.parspng.com-5.png) center repeat-x',
+    //background: `url(${require("../images/window01.png")}) center repeat-x`,
+    backgroundSize: 'auto 100%',
     '& > div': {
         display: 'flex',
         flexDirection: 'column',
@@ -90,7 +88,7 @@ export const HeaddingWrap = styled.div(({ index, datalength }) => mq({
         width: '100%',
         height: `${100 * datalength}%`,
     }
-}));
+}))
 
 export const HeaddingText = styled.div(({ section, index }) => mq({
     display: 'flex',
@@ -130,7 +128,26 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
         height: '50%',
         backgroundColor: '#fff'
     }
-}));
+}))
+
+export const InfiniteMarquee = styled.div(({}) => mq({
+    position: 'absolute',
+    top: 0,
+    padding: '0.5rem 0',
+    width: '100%',
+    overflow: 'hidden',
+    color: '#fff',
+    fontSize: '1.6rem',
+    whiteSpace: 'nowrap',
+    background: '#000',
+    transform: 'matrix3d(1, -0.1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)',
+    '& > span': {
+        display: 'inline-block',
+        marginRight: '1rem',
+        transform: 'translate3d(-289px, 0px, 0px)',
+        animation: `${marquee} 5s linear infinite`,
+    },
+}))
 
 /*** ANIMATION ***/
 export const slime = keyframes`
@@ -140,7 +157,6 @@ export const slime = keyframes`
     75% {border-radius: 71% 52% 69% 31%/69% 52% 79% 58%}
     100% {border-radius: 36% 64% 63% 37%/54% 60% 44% 48%}
 `
-
 
 export const flicker = keyframes`
     0% {opacity: 0.9}
@@ -154,4 +170,9 @@ export const flicker = keyframes`
     72% {opacity: 0.4}
     77% {opacity: 0.9}
     100% {opacity: 0.9}
+`
+
+export const marquee = keyframes`
+    0% {transform: translate3d(-289px, 0px, 0px)}
+    100% {transform: translate3d(0px, 0px, 0px)}
 `

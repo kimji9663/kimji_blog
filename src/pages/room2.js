@@ -5,7 +5,7 @@ import { Global, css } from "@emotion/react"
 import useElementPosition from '../components/useElementPosition'
 
 // css
-import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap } from "../style/room2.styles"
+import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, InfiniteMarquee } from "../style/room2.styles"
 
 //const ConButton = Container.withComponent("button")
 
@@ -24,16 +24,16 @@ const globalStyle = css({
 
 const headingData = [
   {
-    headding: `1989.11.25`
+    headding: `1989 11 25`
   },
   {
-    headding: `This is my desktop.`
+    headding: `This is my birthday.`
   },
   {
-    headding: `And my friend Reo!`
+    headding: `Cake, Candles, Firecrackers!`
   },
   {
-    headding: `Here's all things of my favorites.`
+    headding: `It's my best day.`
   },
 ]
 
@@ -94,8 +94,20 @@ const Room2 = () => {
                 </div>
               </HeaddingWrap>
             </VideoHeading>
+            <InfiniteMarquee>
+              <span>Happy birthday to you!</span>
+              <span>Happy birthday to you!</span>
+              <span>Happy birthday to you!</span>
+              <span>Happy birthday to you!</span>
+            </InfiniteMarquee>
           </MainInner>
         </Main>
+        <div>
+            <p>Happy birthday to you!</p>
+            <p>Happy birthday to you!</p>
+            <p>Happy birthday to you!</p>
+            <p>Happy birthday to you!</p>
+        </div>
       </>
     )
 }
