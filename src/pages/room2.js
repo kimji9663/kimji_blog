@@ -7,8 +7,6 @@ import useElementPosition from '../components/useElementPosition'
 // css
 import { Main, MainInner, VideoHeading, DoorOpening, HeaddingText, HeaddingWrap, InfiniteMarquee } from "../style/room2.styles"
 
-//const ConButton = Container.withComponent("button")
-
 const globalStyle = css({
   'body': {
     margin: 0,
