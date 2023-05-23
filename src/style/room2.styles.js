@@ -79,17 +79,17 @@ export const DoorOpening = styled.div(({ videoFrame, totalFrames }) => mq({
         position: 'absolute',
         width: '50%',
         height: '100%',
-        backgroundImage: 'url(https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/window01.png)',
+        backgroundImage: 'url(https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/window02.png)',
         backgroundRepeat: 'repeat-x',
         backgroundSize: 'auto 100%',
     },
     '& > .left': {
         backgroundPosition: 'top right',
-        left: `-${videoFrame/totalFrames*1000/2}%`,
+        left: `-${videoFrame/totalFrames*2000 > 50 ? 50 : videoFrame/totalFrames*2000}%`,
     },
     '& > .right': {
         backgroundPosition: 'top left',
-        right: `-${videoFrame/totalFrames*1000/2}%`,
+        right: `-${videoFrame/totalFrames*2000 > 50 ? 50 : videoFrame/totalFrames*2000}%`,
     },
 }))
 
