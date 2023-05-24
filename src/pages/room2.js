@@ -11,7 +11,7 @@ const globalStyle = css({
   'body': {
     margin: 0,
     padding: 0,
-    background: '#000',
+    background: '#ebebec',
     color: '#777',
   },
   'body.prevent_scroll': {
@@ -22,7 +22,8 @@ const globalStyle = css({
 
 const headingData = [
   {
-    headding: `1989 11 25`
+    headding: '11.25',
+    sub: '생일파티',
   },
   {
     headding: `This is my birthday.`
@@ -82,10 +83,11 @@ const Room2 = () => {
               <img src={getImage(videoFrame)} alt=""/>
               <HeaddingWrap index={textIndex} datalength={headingData.length}>
                 <div>
-                  {headingData?.map(({headding}, i) => {
+                  {headingData?.map(({headding, sub}, i) => {
                     return (
                       <HeaddingText key={i} section={i} index={textIndex}>
                         <h1>{headding}</h1>
+                        <p>{sub}</p>
                       </HeaddingText>
                     )
                   })}
@@ -96,7 +98,21 @@ const Room2 = () => {
                 <div className="right"></div>
               </DoorOpening>
             </VideoHeading>
-            <InfiniteMarquee>
+            <InfiniteMarquee className="marquee1">
+              <span>Happy birthday to you!</span>
+              <span>Happy birthday to you!</span>
+              <span>Happy birthday to you!</span>
+              <span>Happy birthday to you!</span>
+              <span>Happy birthday to you!</span>
+            </InfiniteMarquee>
+            <InfiniteMarquee className="marquee2">
+              <span>Happy birthday to you!</span>
+              <span>Happy birthday to you!</span>
+              <span>Happy birthday to you!</span>
+              <span>Happy birthday to you!</span>
+              <span>Happy birthday to you!</span>
+            </InfiniteMarquee>
+            <InfiniteMarquee className="marquee3">
               <span>Happy birthday to you!</span>
               <span>Happy birthday to you!</span>
               <span>Happy birthday to you!</span>

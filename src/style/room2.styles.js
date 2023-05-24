@@ -13,6 +13,7 @@ export const MainInner = styled.div(() => ({
     top: 0,
     width: '100%',
     height: '100vh',
+    overflow: 'hidden',
 }))
 
 export const BackgroundImg1 = styled.div(({ total, index }) => ({
@@ -59,7 +60,7 @@ export const BackgroundImg3 = styled.div(({ total, index }) => ({
 
 export const VideoHeading = styled.div(({ index }) => mq({
     display: 'flex',
-    background: [index === 0 ? 'linear-gradient(to bottom, #362c1b, #000 30%, #000)' : (index === 1 ? 'linear-gradient(to bottom, #313939, #000 30%, #000)' : (index === 2 ? 'linear-gradient(to bottom, #48321f, #000 30%, #000)' : 'linear-gradient(to bottom, #063224, #000 30%, #000)')),
+    background: [index === 0 ? 'linear-gradient(to bottom, #ebebec, #ebebec 30%, #707070)' : (index === 1 ? 'linear-gradient(to bottom, #ebebec, #ebebec 30%, #707070)' : (index === 2 ? 'linear-gradient(to bottom, #ebebec, #ebebec 30%, #707070)' : 'linear-gradient(to bottom, #ebebec, #ebebec 30%, #707070)')),
     index === 0 ? 'linear-gradient(to bottom, #362c1b, #000 30%, #000)' : (index === 1 ? 'linear-gradient(to bottom, #313939, #000 30%, #000)' : (index === 2 ? 'linear-gradient(to bottom, #48321f, #000 30%, #000)' : 'linear-gradient(to bottom, #063224, #000 30%, #000)')),
     index === 0 ? 'linear-gradient(to right, #362c1b, #000 50%, #000)' : (index === 1 ? 'linear-gradient(to right, #313939, #000 50%, #000)' : (index === 2 ? 'linear-gradient(to right, #48321f, #000 50%, #000)' : 'linear-gradient(to right, #063224, #000 50%, #000)'))],
     width: '100%',
@@ -116,8 +117,7 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: '100%',
-    boxShadow: ['0px 14px 20px #00000080', '0px 14px 20px #00000080', '10px 0px 20px #00000080'],
+    //boxShadow: ['0px 14px 20px #00000080', '0px 14px 20px #00000080', '10px 0px 20px #00000080'],
     opacity: section === index ? 1 : 0,
 
     '& > h1': {
@@ -127,18 +127,18 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
-        fontSize: ['40px', '60px', '80px'],
+        fontSize: ['70px', '60px', '80px'],
         textAlign: 'center',
         opacity: section === index ? 1 : 0,
         top: section === index ? '-50px' : '50px',
         transition: 'opacity, top 1s ease',
         animation: index === 3 ? `${flicker} 12s linear infinite` : 'none',
-        //color: ['green', 'gray', '#64f0aa'],
         color: '#fff',
         textFillColor: 'transparent',
-        background: index === 0 ? 'url(https://thumbs.gfycat.com/CandidHappyBlackbuck-size_restricted.gif) repeat' : (index === 1 ? '#dddddd' : (index === 2 ? '#ffbc85' : '#64f0aa')),
+        background: index === 0 ? '#fff' : (index === 1 ? '#fff' : (index === 2 ? 'url(https://thumbs.gfycat.com/CandidHappyBlackbuck-size_restricted.gif) repeat' : '#64f0aa')),
         backgroundClip: 'text',
         backgroundPosition: '50% 73%',
+        whiteSpace: 'pre-wrap',
     },
     '& > div': {
         flex: '1 1 auto',
@@ -153,7 +153,6 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
 
 export const InfiniteMarquee = styled.div(({}) => mq({
     position: 'absolute',
-    top: 0,
     padding: '0.5rem 0',
     width: '100%',
     overflow: 'hidden',
@@ -161,12 +160,23 @@ export const InfiniteMarquee = styled.div(({}) => mq({
     fontSize: '1.6rem',
     whiteSpace: 'nowrap',
     background: '#000',
-    transform: 'matrix3d(1, -0.1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)',
+    '&.marquee1': {
+        top: 0,
+        transform: 'matrix3d(1, -0.1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)',
+    },
+    '&.marquee2': {
+        bottom: '100px',
+        transform: 'matrix3d(1, 0.3, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)',
+    },
+    '&.marquee3': {
+        bottom: '20px',
+        transform: 'matrix3d(1, -0.3, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)',
+    },
     '& > span': {
         display: 'inline-block',
         marginRight: '1rem',
         transform: 'translate3d(-289px, 0px, 0px)',
-        animation: `${marquee} 5s linear infinite`,
+        animation: `${marquee} 8s linear infinite`,
     },
 }))
 
