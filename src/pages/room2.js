@@ -99,7 +99,7 @@ const Room2 = () => {
                 <div className="right"></div>
               </DoorOpening>
             </VideoHeading>
-            <InfiniteMarquee className="marquee1">
+            {/* <InfiniteMarquee className="marquee1">
               <span>Happy birthday to you!</span>
               <span>Happy birthday to you!</span>
               <span>Happy birthday to you!</span>
@@ -119,7 +119,7 @@ const Room2 = () => {
               <span>Happy birthday to you!</span>
               <span>Happy birthday to you!</span>
               <span>Happy birthday to you!</span>
-            </InfiniteMarquee>
+            </InfiniteMarquee> */}
           </MainInner>
         </Main>
         <div>

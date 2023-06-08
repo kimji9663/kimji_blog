@@ -73,6 +73,7 @@ export const VideoHeading = styled.div(({ index }) => mq({
 
 export const DoorOpening = styled.div(({ videoFrame, totalFrames }) => mq({
     position: 'absolute',
+    zIndex: 1,
     width: '100%',
     height: '100%',
     overflow: 'hidden',
@@ -81,6 +82,7 @@ export const DoorOpening = styled.div(({ videoFrame, totalFrames }) => mq({
         width: '50%',
         height: '100%',
         backgroundImage: 'url(https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/window02.png)',
+        backgroundColor: 'rgb(180 180 180 / 90%)',
         backgroundRepeat: 'repeat-x',
         backgroundSize: 'auto 100%',
     },
@@ -104,7 +106,7 @@ export const HeaddingWrap = styled.div(({ index, datalength }) => mq({
         flexDirection: 'column',
         alignItems: 'center',
         position: 'absolute',
-        top: `-${100 * index}%`,
+        //top: `-${100 * index}%`,
         left: 0,
         zIndex: 1,
         width: '100%',
@@ -113,16 +115,13 @@ export const HeaddingWrap = styled.div(({ index, datalength }) => mq({
 }))
 
 export const HeaddingText = styled.div(({ section, index }) => mq({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
+    position: 'absolute',
+    top: '40%',
     //boxShadow: ['0px 14px 20px #00000080', '0px 14px 20px #00000080', '10px 0px 20px #00000080'],
     opacity: section === index ? 1 : 0,
 
     '& > h1': {
         flex: '1 1 auto',
-        order: index % 2 === 1 ? 2 : 1,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -140,14 +139,13 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
         backgroundPosition: '50% 73%',
         whiteSpace: 'pre-wrap',
     },
-    '& > div': {
+    '& > p': {
         flex: '1 1 auto',
-        order: index % 2 === 1 ? 1 : 2,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         height: '50%',
-        backgroundColor: '#fff'
+        color: '#fff'
     }
 }))
 
