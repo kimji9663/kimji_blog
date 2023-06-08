@@ -42,7 +42,8 @@ const Room2 = () => {
     //const videoRef = useRef(null)
     const totalFrames = 410
     const videoFrame = Math.floor(useElementPosition(elementRef, totalFrames, 0))
-    const getImage = (frame) => (`https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/cloud/hero-desktop.8e197ed_out${frame.toString().padStart(4, '0')}.jpg`)
+    //const getImage = (frame) => (`https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/cloud/hero-desktop.8e197ed_out${frame.toString().padStart(4, '0')}.jpg`)
+    const getImage = (frame) => (`https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/married/${frame.toString().padStart(4, '0')}.png`)
     let scrollPosition = 0
 
     const scrollTop = () => {
@@ -98,7 +99,7 @@ const Room2 = () => {
                 <div className="right"></div>
               </DoorOpening>
             </VideoHeading>
-            <InfiniteMarquee className="marquee1">
+            {/* <InfiniteMarquee className="marquee1">
               <span>Happy birthday to you!</span>
               <span>Happy birthday to you!</span>
               <span>Happy birthday to you!</span>
@@ -118,7 +119,7 @@ const Room2 = () => {
               <span>Happy birthday to you!</span>
               <span>Happy birthday to you!</span>
               <span>Happy birthday to you!</span>
-            </InfiniteMarquee>
+            </InfiniteMarquee> */}
           </MainInner>
         </Main>
         <div>
