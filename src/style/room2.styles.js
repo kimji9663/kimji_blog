@@ -71,31 +71,6 @@ export const VideoHeading = styled.div(({ index }) => mq({
     },
 }))
 
-export const DoorOpening = styled.div(({ videoFrame, totalFrames }) => mq({
-    position: 'absolute',
-    zIndex: 1,
-    width: '100%',
-    height: '100%',
-    overflow: 'hidden',
-    '& > div': {
-        position: 'absolute',
-        width: '50%',
-        height: '100%',
-        backgroundImage: 'url(https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/window02.png)',
-        backgroundColor: 'rgb(180 180 180 / 90%)',
-        backgroundRepeat: 'repeat-x',
-        backgroundSize: 'auto 100%',
-    },
-    '& > .left': {
-        backgroundPosition: 'top right',
-        left: `-${videoFrame/totalFrames*2000 > 50 ? 50 : videoFrame/totalFrames*2000}%`,
-    },
-    '& > .right': {
-        backgroundPosition: 'top left',
-        right: `-${videoFrame/totalFrames*2000 > 50 ? 50 : videoFrame/totalFrames*2000}%`,
-    },
-}))
-
 export const HeaddingWrap = styled.div(({ index, datalength }) => mq({
     position: 'absolute',
     top: 0,
@@ -146,35 +121,6 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
         height: '50%',
         color: '#fff'
     }
-}))
-
-export const InfiniteMarquee = styled.div(({}) => mq({
-    position: 'absolute',
-    padding: '0.5rem 0',
-    width: '100%',
-    overflow: 'hidden',
-    color: '#fff',
-    fontSize: '1.6rem',
-    whiteSpace: 'nowrap',
-    background: '#000',
-    '&.marquee1': {
-        top: 0,
-        transform: 'matrix3d(1, -0.1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)',
-    },
-    '&.marquee2': {
-        bottom: '100px',
-        transform: 'matrix3d(1, 0.3, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)',
-    },
-    '&.marquee3': {
-        bottom: '20px',
-        transform: 'matrix3d(1, -0.3, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)',
-    },
-    '& > span': {
-        display: 'inline-block',
-        marginRight: '1rem',
-        transform: 'translate3d(-289px, 0px, 0px)',
-        animation: `${marquee} 8s linear infinite`,
-    },
 }))
 
 /*** ANIMATION ***/

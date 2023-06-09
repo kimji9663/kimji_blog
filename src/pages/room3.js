@@ -94,32 +94,7 @@ const Room2 = () => {
                   })}
                 </div>
               </HeaddingWrap>
-              <DoorOpening videoFrame={videoFrame} totalFrames={totalFrames}>
-                <div className="left"></div>
-                <div className="right"></div>
-              </DoorOpening>
             </VideoHeading>
-            {/* <InfiniteMarquee className="marquee1">
-              <span>Happy birthday to you!</span>
-              <span>Happy birthday to you!</span>
-              <span>Happy birthday to you!</span>
-              <span>Happy birthday to you!</span>
-              <span>Happy birthday to you!</span>
-            </InfiniteMarquee>
-            <InfiniteMarquee className="marquee2">
-              <span>Happy birthday to you!</span>
-              <span>Happy birthday to you!</span>
-              <span>Happy birthday to you!</span>
-              <span>Happy birthday to you!</span>
-              <span>Happy birthday to you!</span>
-            </InfiniteMarquee>
-            <InfiniteMarquee className="marquee3">
-              <span>Happy birthday to you!</span>
-              <span>Happy birthday to you!</span>
-              <span>Happy birthday to you!</span>
-              <span>Happy birthday to you!</span>
-              <span>Happy birthday to you!</span>
-            </InfiniteMarquee> */}
           </MainInner>
         </Main>
         <div>
