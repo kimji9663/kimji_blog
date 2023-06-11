@@ -16,20 +16,22 @@ export const MainInner = styled.div(() => ({
     overflow: 'hidden',
 }))
 
-export const BackgroundImg1 = styled.div(({ total, index }) => ({
+export const BackgroundImg1 = styled.div(({ index }) => ({
     display: index === 0 ? 'block' : 'none',
     position: 'absolute',
-    top: '-35%',
+    top: '50%',
     left: '50%',
+    marginTop: '-140px',
+    marginLeft: '-200px',
     zIndex: 1,
     width: '400px',
     height: '300px',
     borderRadius: '100px',
     backgroundColor: 'rgb(255 212 189 / 40%)',
     transform: `translate3d(0, 0, 0) rotateZ(${index * 10}deg) scale3d(1, 1, 1)`,
-    animation: `${slime} 3s linear infinite`,
+    animation: `${slime} 6s linear infinite`,
     transition: 'all 01s ease-in-out',
-    opacity: .3,
+    opacity: 0,
 }))
 
 export const BackgroundImg2 = styled.div(({ total, index }) => ({
@@ -119,7 +121,8 @@ export const HeaddingWrap = styled.div(({ index, datalength }) => mq({
 export const HeaddingText = styled.div(({ section, index }) => mq({
     position: 'absolute',
     top: '40%',
-    opacity: section === index ? 1 : 0,
+    opacity: index === 0 ? 0 : (section === index ? 1 : 0),
+    animation: index === 0 ? `${fadeIn} 5s linear forwards 3s` : 'none',
 
     '& > h1': {
         flex: '1 1 auto',
@@ -129,10 +132,10 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
         position: 'relative',
         fontSize: ['70px', '60px', '80px'],
         textAlign: 'center',
+        margin: 0,
         opacity: section === index ? 1 : 0,
-        top: section === index ? '-50px' : '50px',
-        transition: 'opacity, top 1s ease',
-        animation: index === 3 ? `${flicker} 12s linear infinite` : 'none',
+        top: section === index ? '0px' : '-100px',
+        transition: index === 0 ? 'opacity 1s ease' : 'opacity, top 1s ease',
         color: '#fff',
         textFillColor: 'transparent',
         background: index === 0 ? '#fff' : (index === 1 ? '#fff' : (index === 2 ? 'url(https://thumbs.gfycat.com/CandidHappyBlackbuck-size_restricted.gif) repeat' : '#64f0aa')),
@@ -146,7 +149,8 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
         alignItems: 'center',
         justifyContent: 'center',
         height: '50%',
-        color: '#fff'
+        color: '#fff',
+        fontSize: ['35px', '30px', '40px'],
     }
 }))
 
@@ -181,11 +185,11 @@ export const InfiniteMarquee = styled.div(({}) => mq({
 
 /*** ANIMATION ***/
 export const slime = keyframes`
-    0% {border-radius: 36% 64% 63% 37%/54% 60% 44% 48%}
-    25% {border-radius: 73% 35% 55% 60%/65% 44% 62% 56%}
-    50% {border-radius: 75% 35% 35% 72%/58% 51% 56% 49%}
-    75% {border-radius: 71% 52% 69% 31%/69% 52% 79% 58%}
-    100% {border-radius: 36% 64% 63% 37%/54% 60% 44% 48%}
+    0% {border-radius: 36% 64% 63% 37%/54% 60% 44% 48%;}
+    25% {border-radius: 73% 35% 55% 60%/65% 44% 62% 56%;}
+    50% {border-radius: 75% 35% 35% 72%/58% 51% 56% 49%;}
+    75% {border-radius: 71% 52% 69% 31%/69% 52% 79% 58%;}
+    100% {border-radius: 36% 64% 63% 37%/54% 60% 44% 48%;}
 `
 
 export const flicker = keyframes`
@@ -200,6 +204,11 @@ export const flicker = keyframes`
     72% {opacity: 0.4}
     77% {opacity: 0.9}
     100% {opacity: 0.9}
+`
+
+export const fadeIn = keyframes`
+    0% {opacity: 0}
+    100% {opacity: 1}
 `
 
 export const marquee = keyframes`

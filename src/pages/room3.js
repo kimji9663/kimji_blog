@@ -5,7 +5,7 @@ import { Global, css } from "@emotion/react"
 import useElementPosition from '../components/useElementPosition'
 
 // css
-import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, BackgroundImg1 } from "../style/room2.styles"
+import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, BackgroundImg1 } from "../style/room3.styles"
 
 const globalStyle = css({
   'body': {
@@ -23,7 +23,7 @@ const globalStyle = css({
 const headingData = [
   {
     headding: '11.25',
-    sub: '생일파티',
+    sub: '드 디 어 . . .',
   },
   {
     headding: `This is my birthday.`
@@ -89,10 +89,10 @@ const Room2 = () => {
                       <HeaddingText key={i} section={i} index={textIndex}>
                         <h1>{headding}</h1>
                         <p>{sub}</p>
-                        <BackgroundImg1 />
                       </HeaddingText>
                     )
                   })}
+                  <BackgroundImg1 index={textIndex} />
                 </div>
               </HeaddingWrap>
             </VideoHeading>
