@@ -17,17 +17,19 @@ export const MainInner = styled.div(() => ({
 }))
 
 export const BackgroundImg1 = styled.div(({ total, index }) => ({
+    display: index === 0 ? 'block' : 'none',
     position: 'absolute',
-    top: index <= total/1.19 ? `calc(${index}% - 150px)` : `calc(${total/1.19}% - 150px)`,
-    left: index <= total/2 ? `calc(${index}% - 150px)` : (index <= total/1.19 ? `calc(${total - index}% - 150px)` : `calc(${total - total/1.19}% - 150px)`),
+    top: '-35%',
+    left: '50%',
     zIndex: 1,
-    width: '200px',
+    width: '400px',
     height: '300px',
     borderRadius: '100px',
     backgroundColor: 'rgb(255 212 189 / 40%)',
     transform: `translate3d(0, 0, 0) rotateZ(${index * 10}deg) scale3d(1, 1, 1)`,
     animation: `${slime} 3s linear infinite`,
     transition: 'all 01s ease-in-out',
+    opacity: .3,
 }))
 
 export const BackgroundImg2 = styled.div(({ total, index }) => ({
