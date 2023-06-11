@@ -40,10 +40,10 @@ const Room2 = () => {
     const [textIndex, setTextIndex] = useState(0)
     const elementRef = useRef(null)
     //const videoRef = useRef(null)
-    const totalFrames = 410
+    const totalFrames = 1000
     const videoFrame = Math.floor(useElementPosition(elementRef, totalFrames, 0))
     //const getImage = (frame) => (`https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/cloud/hero-desktop.8e197ed_out${frame.toString().padStart(4, '0')}.jpg`)
-    const getImage = (frame) => (`https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/married/${frame.toString().padStart(4, '0')}.png`)
+    const getImage = (frame) => (`https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/marriage/${frame.toString().padStart(4, '0')}.png`)
     let scrollPosition = 0
 
     const scrollTop = () => {
