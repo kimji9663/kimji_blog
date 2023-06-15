@@ -21,17 +21,21 @@ export const BackgroundImg1 = styled.div(({ index }) => ({
     position: 'absolute',
     top: '50%',
     left: '50%',
-    marginTop: '-140px',
+    marginTop: '-200px',
     marginLeft: '-200px',
-    zIndex: 1,
     width: '400px',
     height: '300px',
-    borderRadius: '100px',
-    backgroundColor: 'rgb(255 212 189 / 40%)',
-    transform: `translate3d(0, 0, 0) rotateZ(${index * 10}deg) scale3d(1, 1, 1)`,
-    animation: `${slime} 6s linear infinite`,
-    transition: 'all 01s ease-in-out',
+    zIndex: 1,
     opacity: 0,
+    animation: `${fadeInScale} 3s linear forwards 4s`,
+    '& > div': {
+        width: '100%',
+        height: '100%',
+        borderRadius: '100px',
+        backgroundColor: 'rgb(255 212 189 / 10%)',
+        animation: `${slime} 6s linear infinite`,
+        transition: 'all 01s ease-in-out',
+    }
 }))
 
 export const BackgroundImg2 = styled.div(({ total, index }) => ({
@@ -62,11 +66,9 @@ export const BackgroundImg3 = styled.div(({ total, index }) => ({
     transition: 'all 01s ease-in-out',
 }))
 
-export const VideoHeading = styled.div(({ index }) => mq({
+export const VideoHeading = styled.div(({ index }) => ({
     display: 'flex',
-    background: [index === 0 ? 'linear-gradient(to bottom, #ebebec, #ebebec 30%, #707070)' : (index === 1 ? 'linear-gradient(to bottom, #ebebec, #ebebec 30%, #707070)' : (index === 2 ? 'linear-gradient(to bottom, #ebebec, #ebebec 30%, #707070)' : 'linear-gradient(to bottom, #ebebec, #ebebec 30%, #707070)')),
-    index === 0 ? 'linear-gradient(to bottom, #362c1b, #000 30%, #000)' : (index === 1 ? 'linear-gradient(to bottom, #313939, #000 30%, #000)' : (index === 2 ? 'linear-gradient(to bottom, #48321f, #000 30%, #000)' : 'linear-gradient(to bottom, #063224, #000 30%, #000)')),
-    index === 0 ? 'linear-gradient(to right, #362c1b, #000 50%, #000)' : (index === 1 ? 'linear-gradient(to right, #313939, #000 50%, #000)' : (index === 2 ? 'linear-gradient(to right, #48321f, #000 50%, #000)' : 'linear-gradient(to right, #063224, #000 50%, #000)'))],
+    background: index === 0 ? 'linear-gradient(to bottom, #362c1b, #926f6f 30%, #fff)' : (index === 1 ? 'linear-gradient(to bottom, #544629, #b38484 30%, #c1afaf)' : (index === 2 ? 'linear-gradient(to bottom, #a5874a, #d7b7b7 30%, #e8e8e8)' : 'linear-gradient(to bottom, #ebebec, #ebebec 30%, #707070)')),
     width: '100%',
     height: '100%',
     '& > img': {
@@ -124,18 +126,19 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
     opacity: index === 0 ? 0 : (section === index ? 1 : 0),
     animation: index === 0 ? `${fadeIn} 5s linear forwards 3s` : 'none',
 
-    '& > h1': {
+    '& > .heading1': {
         flex: '1 1 auto',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
-        fontSize: ['70px', '60px', '80px'],
+        fontSize: ['40px', '60px', '80px'],
+        fontWeight: 'bold',
         textAlign: 'center',
         margin: 0,
         opacity: section === index ? 1 : 0,
-        top: section === index ? '0px' : '-100px',
-        transition: index === 0 ? 'opacity 1s ease' : 'opacity, top 1s ease',
+        top: section === index ? '0px' : '-50px',
+        transition: index === 0 ? 'opacity 3s ease' : 'opacity 5s ease, top 3s ease',
         color: '#fff',
         textFillColor: 'transparent',
         background: index === 0 ? '#fff' : (index === 1 ? '#fff' : (index === 2 ? 'url(https://thumbs.gfycat.com/CandidHappyBlackbuck-size_restricted.gif) repeat' : '#64f0aa')),
@@ -143,7 +146,7 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
         backgroundPosition: '50% 73%',
         whiteSpace: 'pre-wrap',
     },
-    '& > p': {
+    '& > .heading2': {
         flex: '1 1 auto',
         display: 'flex',
         alignItems: 'center',
@@ -151,6 +154,9 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
         height: '50%',
         color: '#fff',
         fontSize: ['35px', '30px', '40px'],
+        opacity: section === index ? 1 : 0,
+        top: section === index ? '0px' : '-100px',
+        transition: index === 0 ? 'opacity 1s ease' : 'opacity, top 1s ease',
     }
 }))
 
@@ -206,9 +212,13 @@ export const flicker = keyframes`
     100% {opacity: 0.9}
 `
 
+export const fadeInScale = keyframes`
+    0% {opacity: 0; transform: scale(.5, .5)}
+    100% {opacity: 1; transform: scale(1, 1)}
+`
 export const fadeIn = keyframes`
-    0% {opacity: 0}
-    100% {opacity: 1}
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 `
 
 export const marquee = keyframes`

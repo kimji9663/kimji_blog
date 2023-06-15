@@ -22,17 +22,18 @@ const globalStyle = css({
 
 const headingData = [
   {
-    headding: '11.25',
-    sub: '드 디 어 . . .',
+    headding1: '2024년 2월 3일',
+    headding2: '토요일',
   },
   {
-    headding: `This is my birthday.`
+    headding1: `오후 1시`,
   },
   {
-    headding: `Cake, Candles, Firecrackers!`
+    headding1: `저희 결혼합니다.`,
   },
   {
-    headding: `It's my best day.`
+    headding1: `김지훈`,
+    headding2: `이소연`,
   },
 ]
 
@@ -84,15 +85,17 @@ const Room2 = () => {
               <img src={getImage(videoFrame)} alt=""/>
               <HeaddingWrap index={textIndex} datalength={headingData.length}>
                 <div>
-                  {headingData?.map(({headding, sub}, i) => {
+                  {headingData?.map(({headding1, headding2}, i) => {
                     return (
                       <HeaddingText key={i} section={i} index={textIndex}>
-                        <h1>{headding}</h1>
-                        <p>{sub}</p>
+                        <p className="heading1">{headding1}</p>
+                        <p className="heading2">{headding2}</p>
                       </HeaddingText>
                     )
                   })}
-                  <BackgroundImg1 index={textIndex} />
+                  <BackgroundImg1 index={textIndex}>
+                    <div></div>
+                  </BackgroundImg1>
                 </div>
               </HeaddingWrap>
             </VideoHeading>
