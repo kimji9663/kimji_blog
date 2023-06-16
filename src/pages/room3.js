@@ -3,6 +3,7 @@ import Loading from "../components/loading"
 import Seo from "../components/seo"
 import { Global, css } from "@emotion/react"
 import useElementPosition from '../components/useElementPosition'
+import "../style/fonts.css"
 
 // css
 import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, BackgroundImg1 } from "../style/room3.styles"
@@ -13,6 +14,7 @@ const globalStyle = css({
     padding: 0,
     background: '#ebebec',
     color: '#777',
+    fontFamily: 'AritaBuri',
   },
   'body.prevent_scroll': {
     overflow: 'hidden',
@@ -43,7 +45,6 @@ const Room2 = () => {
     //const videoRef = useRef(null)
     const totalFrames = 1000
     const videoFrame = Math.floor(useElementPosition(elementRef, totalFrames, 0))
-    //const getImage = (frame) => (`https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/cloud/hero-desktop.8e197ed_out${frame.toString().padStart(4, '0')}.jpg`)
     const getImage = (frame) => (`https://raw.githubusercontent.com/kimji9663/kimji_blog/main/src/images/marriage/${frame.toString().padStart(4, '0')}.png`)
     let scrollPosition = 0
 
