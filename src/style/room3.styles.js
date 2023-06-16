@@ -117,7 +117,9 @@ export const HeaddingWrap = styled.div(({ index, datalength }) => mq({
         zIndex: 1,
         width: '100%',
         height: `100%`,
-    }
+    },
+    background: index === 2 ? 'url(https://img1.picmix.com/output/stamp/normal/0/6/4/2/1672460_85185.gif)  center no-repeat' : 'none',
+    backgroundSize: index === 2 ? 'cover' : 'auto',
 }))
 
 export const HeaddingText = styled.div(({ section, index }) => mq({
@@ -140,11 +142,6 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
         top: section === index ? '0px' : '-50px',
         transition: index === 0 ? 'opacity 3s ease' : 'opacity 5s ease, top 3s ease',
         color: '#fff',
-        textFillColor: 'transparent',
-        background: index === 0 ? '#fff' : (index === 1 ? '#fff' : (index === 2 ? 'url(https://thumbs.gfycat.com/CandidHappyBlackbuck-size_restricted.gif) repeat' : '#64f0aa')),
-        backgroundClip: 'text',
-        backgroundPosition: '50% 73%',
-        whiteSpace: 'pre-wrap',
     },
     '& > .heading2': {
         flex: '1 1 auto',
