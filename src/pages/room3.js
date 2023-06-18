@@ -6,7 +6,7 @@ import useElementPosition from '../components/useElementPosition'
 import "../style/fonts.css"
 
 // css
-import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, BackgroundImg1 } from "../style/room3.styles"
+import { Main, MainInner, VideoHeading, HeaddingText, HeaddingWrap, BackgroundImg1, Invitation, WeddingDay } from "../style/room3.styles"
 
 const globalStyle = css({
   'body': {
@@ -79,7 +79,6 @@ const Room2 = () => {
         <Seo title="ROOM2" />
         <Global styles={globalStyle} />
         {loading ? <Loading time={loadingTime} /> : null}
-        
         <Main ref={elementRef}>
           <MainInner videoFrame={videoFrame}>
             <VideoHeading index={textIndex}>
@@ -102,12 +101,26 @@ const Room2 = () => {
             </VideoHeading>
           </MainInner>
         </Main>
-        <div>
-            <p>Happy birthday to you!</p>
-            <p>Happy birthday to you!</p>
-            <p>Happy birthday to you!</p>
-            <p>Happy birthday to you!</p>
-        </div>
+        <Invitation>
+          <p>소중한 분들을 초대합니다.</p>
+          <p>사랑이 무엇인지<br />
+            누군가 물어왔을 때<br />
+            <br />
+            순간의 망설임도 없이<br />
+            서로를 떠올리던 그 마음으로<br />
+            <br />
+            저희 둘, 결혼합니다.
+          </p>
+          <div class="box">
+            <em>김영준 · 김영희</em>의 차남 <strong>지훈</strong>
+          </div>
+          <div class="box">
+            <em>이영진 · 박윤화</em>의 장녀 <strong>소연</strong>
+          </div>
+        </Invitation>
+        <WeddingDay>
+          <p>The wedding day</p>
+        </WeddingDay>
       </>
     )
 }
