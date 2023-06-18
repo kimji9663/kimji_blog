@@ -118,7 +118,7 @@ export const HeaddingWrap = styled.div(({ index, datalength }) => mq({
         width: '100%',
         height: `100%`,
     },
-    background: index === 2 ? 'url(https://img1.picmix.com/output/stamp/normal/0/6/4/2/1672460_85185.gif)  center no-repeat' : 'none',
+    background: index === 2 ? 'url(https://img1.picmix.com/output/stamp/normal/0/6/4/2/1672460_85185.gif) center no-repeat' : 'none',
     backgroundSize: index === 2 ? 'cover' : 'auto',
 }))
 
@@ -150,12 +150,23 @@ export const HeaddingText = styled.div(({ section, index }) => mq({
         justifyContent: 'center',
         height: '50%',
         color: '#fff',
-        fontSize: ['35px', '30px', '40px'],
+        fontSize: index === 3 ? ['40px', '60px', '80px'] : ['35px', '30px', '40px'],
+        fontWeight: index === 3 ? 'bold' : 'normal',
         opacity: section === index ? 1 : 0,
         top: section === index ? '0px' : '-100px',
         transition: index === 0 ? 'opacity 1s ease' : 'opacity, top 1s ease',
     }
 }))
+
+
+export const Invitation = styled.div(({ index }) => ({
+    fontSize: '20px',
+    textAlign: 'center',
+}))
+
+export const WeddingDay = styled.div(({}) => ({
+    
+})) 
 
 export const InfiniteMarquee = styled.div(({}) => mq({
     position: 'absolute',
